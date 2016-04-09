@@ -5,3 +5,38 @@
 {
     color: red;
 }
+.parentContainer{
+    background-image: url("../images/bg.jpg");
+    margin: 0;
+    width: 100%;
+   
+    background-size: cover;
+}
+h2{
+    color:white;
+    text-align: center;
+}
+
+.childContainer{
+    color: black;
+    background-color:white;
+    margin: 0;
+    width: 100%;
+    background-size: cover;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+}
+
+.childContainer:hover {
+    opacity: 0.8;
+    filter: alpha(opacity=80); /* For IE8 and earlier */
+}
+
+.UserContainer{
+     background-image: url("../images/User.jpg");
+    margin: 0;
+    width: 100%;
+    
+ background-size: cover;
+    
+}

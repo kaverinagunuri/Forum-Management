@@ -29,7 +29,7 @@ include 'forgotPassword.php';
 
                 <div class="navbar-header">
 
-                    <a href="" class="navbar-brand">Form Management</a>
+                    <a href="" class="navbar-brand"><h4>Form Management</h4></a>
 
                     <button type="button" class="navbar-toggle" data-toggle="collapse"
                             data-target=".navbar-collapse">
@@ -65,7 +65,7 @@ include 'forgotPassword.php';
             </div>
 
         </div>
-    <div class="container">
+    <div class="container parentContainer">
         <?php
                     if($error)
                     {
@@ -79,8 +79,8 @@ include 'forgotPassword.php';
                     
                     
                     ?>
-            <h1>REGISTRATION FORM</h1>
-            <div class="container col-md-10"> 
+            <h2>REGISTRATION FORM</h2>
+            <div class="container childContainer col-md-10"> 
             <form class="form-group"  id="registration" method="post" enctype="multipart/form-data" >
               
                     <div class="col-md-6 col-offset-3 marginTop">
@@ -169,4 +169,9 @@ include 'forgotPassword.php';
 
     
   </body>
+  <script src="js/bootstrap.min.js"></script>
+        <script>
+
+            $(".parentContainer").css("min-height", $(window).height()-50);
+        </script>
 </html>
