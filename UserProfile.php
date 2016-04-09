@@ -16,6 +16,7 @@
   <?php
    
  include 'login.php';
+ include 'UpdateUser.php';
  //print_r($_SESSION);
  $UserQuery="SELECT * FROM UserData WHERE id='".$_SESSION['id']."' LIMIT 1";
            $UserResult=mysqli_query($link,$UserQuery);
@@ -57,9 +58,9 @@
                                    
                     <ul class="nav navbar-nav">
 
-                        <li class="active"><a href="UserLogin.php"> DashBoard</a></li>
+                        <li><a href="UserLogin.php"> DashBoard</a></li>
 
-                        <li><a href="UserProfile.php">My Profile</a></li>
+                        <li class="active"><a href="UserProfile.php">My Profile</a></li>
 
                         <li><a href="ChangePassword.php">Change Password</a></li>
                          <li><a href="ViewProfile"> View Profile</a></li>
@@ -78,10 +79,23 @@
 
         </div>
       <div class="container UserContainer">
-          <h3 class="center">Update Profile</h3>
+           <?php
+                    if($error)
+                    {
+                        echo '<div class="alert alert-danger">'.addslashes($error).'</div>';
+                    }
+                    if($msg)
+                    {
+                        echo '<div class="alert alert-success">'.addslashes($msg).'</div>';
+                    }
+                    
+                    
+                    
+                    ?>
+          <h3 >Update Profile</h3>
       <div class="container childContainer col-md-10"> 
            
-            <form class="form-group"  id="registration" method="post" enctype="multipart/form-data" >
+            <form class="form-group"  id="UserProfile" method="post" enctype="multipart/form-data" >
               
                     <div class="col-md-6 col-offset-3 marginTop">
                         <label for="FirstName"> FirstName</label>
@@ -108,18 +122,45 @@
 
                  </div>
                     <div class="col-md-6 col-offset-3 marginTop">
-                        <span class="form-group-addon glyphicon glyphicon-phone "></span>
+                        <span class="form-group-addon glyphicon glyphicon-map "></span>
                         <label for="AddressOne">Address Line 1</label>
-                        <textarea id="AddressOne" name="AddressOne" maxlength="500" required oninvalid="setCustomValidity('Plz enter on valid Address')"  oninput="setCustomValidity('')"></textarea>
+                        <textarea id="AddressOne" name="AddressOne" maxlength="500" required oninvalid="setCustomValidity('Plz enter on valid Address 1 Mandaitory')"  oninput="setCustomValidity('')"></textarea>
                  </div>
+                
+       <div class="col-md-6 col-offset-3 marginTop">
+                        <span class="form-group-addon glyphicon glyphicon-map "></span>
+                        <label for="AddressTwo">Address Line 2</label>
+                        <textarea id="AddressTwo" name="AddressTwo" maxlength="500" required oninvalid="setCustomValidity('Plz enter on valid Address2 Mandaitory')"  oninput="setCustomValidity('')"></textarea>
+                 </div>
+                <div class="col-md-6 col-offset-3 marginTop">
+                        <span class="form-group-addon glyphicon glyphicon-map "></span>
+                        <label for="City">City</label>
+                        <input type="text" id="City" name="City" class="form-control" pattern="[a-zA-Z]+" required oninvalid="setCustomValidity('Plz enter on City')" oninput="setCustomValidity('')" title="City Name Should be Mandaitory" />
+                   
+                 </div>
+                 <div class="col-md-6 col-offset-3 marginTop">
+                        <span class="form-group-addon glyphicon glyphicon-map "></span>
+                        <label for="State">State</label>
+                        <input type="text" id="State" name="State" class="form-control" pattern="[a-zA-Z]+" required oninvalid="setCustomValidity('Plz enter on State')" oninput="setCustomValidity('')" title="State Name Should be Mandaitory" />
+                   
+                 </div>
+                 <div class="col-md-6 col-offset-3 marginTop">
+                        <span class="form-group-addon glyphicon glyphicon-map "></span>
+                        <label for="Country">Country</label>
+                        <input type="text" id="Country" name="Country" class="form-control" pattern="[a-zA-Z]+" required oninvalid="setCustomValidity('Plz enter on Country')" oninput="setCustomValidity('')" title="Country Name Should be Mandaitory" />
+                   
+                 </div>
+                 <div class="col-md-6 col-offset-3 marginTop">
+                        <span class="form-group-addon glyphicon glyphicon-map "></span>
+                        <label for="ZipCode">ZipCode</label>
+                        <input type="text" id="ZipCode" name="ZipCode" class="form-control" pattern="[0-9]{6}" required oninvalid="setCustomValidity('Plz enter on ZipCode')" oninput="setCustomValidity('')" title="ZipCode Should be 6 digits valid postal code " />
+                   
+                 </div>
+                 <div class="col-md-6 col-offset-3 marginTop">
+                     <input type="submit" class="btn btn-success btn-lg" value="Update" name="Update" id="Update"/></div>
       
-      
-      
-      
-      
-      
-      
-      </div></div>
+            </form></div>
+           </div></div>
       
   </body>
   <script src="js/bootstrap.min.js"></script>

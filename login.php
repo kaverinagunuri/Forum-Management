@@ -42,9 +42,7 @@ if (isset($_POST['SignUp']) == "SignUp") {
     if ($error)
         $error = "there were errors in your signup details<br/>" . $error;
     else {
-        // $password_md=md5(md5($_POST['email'].$_POST['password']));
-
-        $query = "SELECT * FROM users WHERE email='" . mysqli_real_escape_string($link, $_POST['EmailId']) . "'";
+       $query = "SELECT * FROM UserData WHERE EmailId='" . mysqli_real_escape_string($link, $_POST['EmailId']) . "'";
         $result = mysqli_query($link, $query);
         $results = mysqli_num_rows($result);
         if ($results)

@@ -105,7 +105,7 @@ include 'forgotPassword.php';
                  <div class="col-md-6 col-offset-3 marginTop">
                         <span class="form-group-addon glyphicon glyphicon-phone "></span>
                         <label for="Mobile">Mobile-Num</label>
-                        <input type="text" id="Mobile" name="Mobile" placeholder="Mobile number" maxlength="10" class="form-control" pattern="[0-9]+" required oninvalid="setCustomValidity('Plz enter on valid MobileNumber')" oninput="setCustomValidity('')" title="Mobile number should be 10 digit number" />
+                        <input type="text" id="Mobile" name="Mobile" placeholder="Mobile number" maxlength="10" class="form-control" pattern="[0-9]{10}" required oninvalid="setCustomValidity('Plz enter on valid MobileNumber')" oninput="setCustomValidity('')" title="Mobile number should be 10 digit number" />
                    
 
                     </div>
