@@ -21,7 +21,7 @@
  
 </head>
 <?php 
-include ("login.php");
+include ("Login.php");
 include 'forgotPassword.php';
 ?>
   <body>

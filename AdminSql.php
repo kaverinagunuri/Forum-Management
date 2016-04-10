@@ -54,7 +54,7 @@ if (isset($_POST['Add-User']) == "Add-User") {
         $error.="please enter the ZipCode<br/>";
     }
     if ($error)
-        $error = "there were errors in your signup details<br/>" . $error;
+        $error = "there were errors in your Registration details<br/>" . $error;
     else {
        $query = "SELECT * FROM UserData WHERE EmailId='" . mysqli_real_escape_string($link, $_POST['EmailId']) . "'";
         $result = mysqli_query($link, $query);
@@ -66,7 +66,7 @@ if (isset($_POST['Add-User']) == "Add-User") {
 
 
             mysqli_query($link, $query);
-            $msg.="you were successfully signed!";
+            $msg.="User has been successfully registered!";
             
         }
     }
