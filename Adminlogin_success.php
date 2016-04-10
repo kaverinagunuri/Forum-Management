@@ -29,23 +29,19 @@
 <body>
     <div class="container">
         
-    <div class="col-md-6 marginTop childContainer center ">
+    <div class="col-md-6 marginTop parentContainer center ">
         <h2>Welcome 
             <?php
         if(isset($AdminName))
         {
             echo $AdminName;
-             
         }
         
         ?></h2>
-        
-        <p><a href="AdminLogin.php">Click here to view ur DashBord</a></p> 
-        
-        
+            <p><a href="AdminLogin.php">Click here to view ur DashBord</a></p> 
     </div>
       
     </div>
-    
+   
 </body>
 </html>

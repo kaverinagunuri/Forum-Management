@@ -9,7 +9,7 @@ if ($_GET['logout'] == 1 AND $_SESSION['id']) {
 include("connection.php");
 if (isset($_POST['SignUp']) == "SignUp") {
     $error = "";
-    // $mob="/^[1-9][0-9]*$/"; 
+    
     if (!$_POST['FirstName']) {
         $error.="please enter the FirstName<br/>";
     }
@@ -30,9 +30,7 @@ if (isset($_POST['SignUp']) == "SignUp") {
 
     else if (!$_POST['Mobile'])
         $error.="please enter the Mobile <br/>";
-    //else if(!preg_match('`/[^0-9]/`',$_POST['Mobile'])){
-    //$error.="please enter Valid Mobile number <br/>";}
-
+   
     else {
         if (strlen($_POST['Password']) < 8)
             $error.="the length of pssword must be atleast 8 characters<br/>";
@@ -53,13 +51,10 @@ if (isset($_POST['SignUp']) == "SignUp") {
 
             mysqli_query($link, $query);
             $msg.="you were successfully signed!";
-            // $_SESSION['id']=mysqli_insert_id($link);
-            //echo $_SESSION['id'];
-            //header("Location:mainpage.php");
+            
         }
     }
-}// '".mysqli_real_escape_string($link,$_POST['email'])."',md5(md5($_POST['email'].$_POST['password'])."'
-
+}
  if(isset($_POST['Login']))
         { 
             if($_POST['Login']=="Login"){
@@ -74,10 +69,8 @@ if (isset($_POST['SignUp']) == "SignUp") {
         }
         else{
            $Credential="SELECT * FROM UserData WHERE EmailId='$x' AND Password='$y'";
-           //$query="SELECT * FROM users WHERE email='".mysqli_real_escape_string($link,$_POST['loginemail'])."' AND password='".md5(md5($_POST['loginemail'].$_POST['loginpassword']))."'"; 
-            $result1=mysqli_query($link,$Credential);
+          $result1=mysqli_query($link,$Credential);
             $row=mysqli_fetch_array($result1);
-            //print_r($row);
             if($row){
                  session_unset();
                 $_SESSION['id']=$row['Id'];

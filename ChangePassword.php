@@ -59,8 +59,8 @@
                         <li><a href="UserProfile.php">My Profile</a></li>
 
                         <li class="active"><a href="ChangePassword.php">Change Password</a></li>
-                        <li><a href="ViewProfile"> View Profile</a></li>
-                        <li><a href="Logout">Logout</a></li>
+                        <li><a href="ViewProfile.php"> View Profile</a></li>
+                        <li><a href="index.php?logout=1">Logout</a></li>
 
                     </ul>
                     <div class="navbar-form navbar-right">

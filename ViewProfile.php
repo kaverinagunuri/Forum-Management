@@ -1,38 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login-Success</title>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Login-Success</title>
 
-  
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
-     <script src="js/jquery-2.2.2.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/validation.js"></script>
-  </head>
-  <?php
+
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/styles.css" rel="stylesheet">
+        <script src="js/jquery-2.2.2.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/validation.js"></script>
+    </head>
+    <?php
+    include 'connection.php';
+    include 'login.php';
+    $UserQuery = "SELECT * FROM UserData WHERE id='" . $_SESSION['id'] . "' LIMIT 1";
+    $UserResult = mysqli_query($link, $UserQuery);
+    $row = mysqli_fetch_array($UserResult);
+    $UserName = $row['FirstName'];
+    $UserLastName = $row['LastName'];
+    $UserEmail = $row['EmailId'];
+    $UserMobile = $row['Mobile'];
+    $UserAdressOne = $row['AddressOne'];
    
- include 'login.php';
- include 'UpdateUser.php';
- //print_r($_SESSION);
- $UserQuery="SELECT * FROM UserData WHERE id='".$_SESSION['id']."' LIMIT 1";
-           $UserResult=mysqli_query($link,$UserQuery);
-           $row=mysqli_fetch_array($UserResult);
-          $UserName=$row['FirstName'];
-          $UserLastName=$row['LastName'];
-          $UserEmail=$row['EmailId'];
-          $UserMobile=$row['Mobile']
-          
-          
-       
-      ?>
-      
-      
-     
-      <div class="nav navbar-default">
+    $UserAdressTwo = $row['AddressTwo'];
+    $UserCity = $row['City'];
+    $UserState = $row['State'];
+    $UserCountry = $row['Country'];
+    $UserZipCode = $row['ZipCode'];
+    ?>
+    <body>
+
+
+
+        <div class="nav navbar-default">
 
             <div class="container">
 
@@ -55,47 +58,35 @@
                 </div>
 
                 <div class="collapse navbar-collapse">
-                                   
+
                     <ul class="nav navbar-nav">
 
                         <li><a href="UserLogin.php"> DashBoard</a></li>
 
-                        <li class="active"><a href="UserProfile.php">My Profile</a></li>
+                        <li><a href="UserProfile.php">My Profile</a></li>
 
-                        <li><a href="ChangePassword.php">Change Password</a></li>
-                         <li><a href="ViewProfile.php"> View Profile</a></li>
-                          <li><a href="index.php?logout=1">Logout</a></li>
+                        <li ><a href="ChangePassword.php">Change Password</a></li>
+                        <li class="active"><a href="ViewProfile.php"> View Profile</a></li>
+                        <li><a href="index.php?logout=1">Logout</a></li>
 
                     </ul>
                     <div class="navbar-form navbar-right">
-                        <?php
-                      echo $UserName;
-                       ?>
+<?php
+echo $UserName;
+?>
                     </div>
-                 
+
                 </div>
-                
+
             </div>
 
         </div>
-      <div class="container UserContainer">
-           <?php
-                    if($error)
-                    {
-                        echo '<div class="alert alert-danger">'.addslashes($error).'</div>';
-                    }
-                    if($msg)
-                    {
-                        echo '<div class="alert alert-success">'.addslashes($msg).'</div>';
-                    }
-                    
-                    
-                    
-                    ?>
-          <h3 >Update Profile</h3>
+         <div class="container UserContainer">
+           
+          <h3 >View Profile</h3>
       <div class="container childContainer col-md-10"> 
            
-            <form class="form-group"  id="UserProfile" method="post" enctype="multipart/form-data" >
+            <form class="form-group"  id="ViewProfile" method="post" enctype="multipart/form-data" >
               
                     <div class="col-md-6 col-offset-3 marginTop">
                         <label for="FirstName"> FirstName</label>
@@ -124,48 +115,47 @@
                     <div class="col-md-6 col-offset-3 marginTop">
                         <span class="form-group-addon glyphicon glyphicon-map "></span>
                         <label for="AddressOne">Address Line 1</label>
-                        <textarea id="AddressOne" name="AddressOne" maxlength="500" required oninvalid="setCustomValidity('Plz enter on valid Address 1 Mandaitory')"  oninput="setCustomValidity('')"></textarea>
+                        <textarea id="AddressOne" name="AddressOne" maxlength="500" class="form-control" readonly ><?php echo $UserAdressOne;?></textarea>
+
                  </div>
                 
        <div class="col-md-6 col-offset-3 marginTop">
                         <span class="form-group-addon glyphicon glyphicon-map "></span>
                         <label for="AddressTwo">Address Line 2</label>
-                        <textarea id="AddressTwo" name="AddressTwo" maxlength="500" required oninvalid="setCustomValidity('Plz enter on valid Address2 Mandaitory')"  oninput="setCustomValidity('')"></textarea>
-                 </div>
+                        <textarea id="AddressTwo" name="AddressTwo" maxlength="500" class="form-control" readonly ><?php echo $UserAdressTwo;?></textarea>
+</div>
                 <div class="col-md-6 col-offset-3 marginTop">
                         <span class="form-group-addon glyphicon glyphicon-map "></span>
                         <label for="City">City</label>
-                        <input type="text" id="City" name="City" class="form-control" pattern="[a-zA-Z]+" required oninvalid="setCustomValidity('Plz enter on City')" oninput="setCustomValidity('')" title="City Name Should be Mandaitory" />
-                   
+                        <input type="text" id="City" name="City" class="form-control" readonly value="<?php echo $UserCity?>" />
+
                  </div>
                  <div class="col-md-6 col-offset-3 marginTop">
                         <span class="form-group-addon glyphicon glyphicon-map "></span>
                         <label for="State">State</label>
-                        <input type="text" id="State" name="State" class="form-control" pattern="[a-zA-Z]+" required oninvalid="setCustomValidity('Plz enter on State')" oninput="setCustomValidity('')" title="State Name Should be Mandaitory" />
-                   
+                        <input type="text" id="State" name="State" class="form-control" readonly value="<?php echo $UserState?>" />
+
                  </div>
                  <div class="col-md-6 col-offset-3 marginTop">
                         <span class="form-group-addon glyphicon glyphicon-map "></span>
                         <label for="Country">Country</label>
-                        <input type="text" id="Country" name="Country" class="form-control" pattern="[a-zA-Z]+" required oninvalid="setCustomValidity('Plz enter on Country')" oninput="setCustomValidity('')" title="Country Name Should be Mandaitory" />
-                   
+                        <input type="text" id="Country" name="Country"class="form-control" readonly value="<?php echo $UserCountry?>" />
+
                  </div>
                  <div class="col-md-6 col-offset-3 marginTop">
                         <span class="form-group-addon glyphicon glyphicon-map "></span>
                         <label for="ZipCode">ZipCode</label>
-                        <input type="text" id="ZipCode" name="ZipCode" class="form-control" pattern="[0-9]{6}" required oninvalid="setCustomValidity('Plz enter on ZipCode')" oninput="setCustomValidity('')" title="ZipCode Should be 6 digits valid postal code " />
-                   
+                        <input type="text" id="ZipCode" name="ZipCode" class="form-control" readonly value="<?php echo $UserZipCode?>" />
+
                  </div>
-                 <div class="col-md-6 col-offset-3 marginTop">
-                     <input type="submit" class="btn btn-success btn-lg" value="Update" name="Update" id="Update"/></div>
-      
+                
             </form></div>
            </div>
       
-  </body>
-  <script src="js/bootstrap.min.js"></script>
-        <script>
+            </body>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
 
-            $(".UserContainer").css("min-height", $(window).height()-50);
-        </script>
+        $(".UserContainer").css("min-height", $(window).height() - 50);
+    </script>
 </html>

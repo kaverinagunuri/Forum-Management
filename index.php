@@ -12,6 +12,11 @@
      <script src="js/jquery-2.2.2.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/validation.js"></script>
+    
+        <script>
+
+            $(".parentContainer").css("min-height", $(window).height()-50);
+        </script>
        
  
 </head>
@@ -140,7 +145,7 @@ include 'forgotPassword.php';
 
         </div>
           
-                        <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal fade" id="myModal" role="dialog">
                             <div class="modal-dialog">
 
                                 <!-- Modal content-->
@@ -150,14 +155,13 @@ include 'forgotPassword.php';
                                         <h4 class="modal-title">Forgot Password</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <form method="post" >
+                                       <form method="post" >
                                          
                                         <div class="form-group">
                                             <label for="ForgotEmail">Email ID</label>
                                             <input type="email" name="ForgotEmail" id="ForgotEmail"/>
                                             <input type="submit" name="ForgotSubmit" id="ForgotSubmit" />
                                         </div></form>
-                                            
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -167,11 +171,9 @@ include 'forgotPassword.php';
                             </div>
                         </div>
 
+                 
+
     
   </body>
-  <script src="js/bootstrap.min.js"></script>
-        <script>
-
-            $(".parentContainer").css("min-height", $(window).height()-50);
-        </script>
+ 
 </html>

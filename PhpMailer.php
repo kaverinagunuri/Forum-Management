@@ -5,7 +5,7 @@ include("PHPMailer-master/class.smtp.php"); // optional, gets called from within
  
 $mail             = new PHPMailer();
 
-$body             = "$Result";
+$body             = "haiiii";
 //$body             = eregi_replace("[\]",'',$body);
 $mail->IsSMTP(); // telling the class to use SMTP
 
