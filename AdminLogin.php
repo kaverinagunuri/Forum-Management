@@ -73,7 +73,7 @@
 
                         <li class="active"><a href=""> DashBoard</a></li>
 
-                        <li><a href="UserProfile.php">Users</a></li>
+                        <li><a href="AdminUser.php">Users</a></li>
 
                         <li><a href="index.php?logout=1">Logout</a></li>
 
