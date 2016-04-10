@@ -43,3 +43,11 @@ h2{
 .adminContainer{
     background-color: black
 }
+
+.successContainer{
+    background-image: url("../images/success.jpg");
+    margin: 0;
+    width: 100%;
+       padding-top: 100px;
+    background-size: cover;
+}

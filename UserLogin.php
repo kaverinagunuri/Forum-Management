@@ -16,7 +16,7 @@
   
   <?php
  
- include 'login.php';
+ include 'Login.php';
  session_start();
   $UserQuery="SELECT * FROM UserData WHERE id='".$_SESSION['id']."' LIMIT 1";
            $UserResult=mysqli_query($link,$UserQuery);

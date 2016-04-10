@@ -17,7 +17,7 @@
   
   <?php
   
- include 'login.php';
+ include 'Login.php';
  
  session_start();
     
@@ -71,7 +71,7 @@
                                    
                     <ul class="nav navbar-nav">
 
-                        <li class="active"><a href=""> DashBoard</a></li>
+                        <li class="active"><a href="AdminLogin.php"> DashBoard</a></li>
 
                         <li><a href="AdminUser.php">Users</a></li>
 
@@ -104,7 +104,8 @@ $result = mysqli_query($link, $sql);
    
        
        ?>
-                <table class="table">
+               <div class="table-responsive">          
+  <table class="table">
     <thead>
       <tr>
         <th>#</th>
@@ -116,36 +117,27 @@ $result = mysqli_query($link, $sql);
     </thead>
     <tbody>
         <?php
-  
-        while($row = mysqli_fetch_assoc($result)) {
-        
-        echo "<tr><td>".$row["Id"]."</td>"
-                . "<td>".$row["FirstName"]."</td>"
-                . "<td> ".$row["LastName"]."</td>"
-                . "<td>".$row["EmailId"]."</td>"
-                ."<td>"?><input type="submit" class="btn btn-success btn-sm" value="View" name="View" id="View"/>
-                   <?php 
-                  
-                   "</td>"
-                   ."<td>"?><input type="submit" class="btn btn-success btn-sm" value="Update" name="Update" id="Update"/>
-                   <?php
-                   "</td>"
-                   ."<td>"?><input type="submit" class="btn btn-success btn-sm" value="Delete" name="Delete" id="Delete"/>
-                   <?php
-                   "</td>"
-                . "</tr>";
+ 
+        while($row = mysqli_fetch_row($result)) {
+            ?>
        
-            
+         <tr>
+                <td><?php echo $row[0]?></td>
+                <td><?php echo $row[1]?></td>
+                <td><?php echo $row[2]?></td>
+              <td><a href="View.php?Id=<?=$row[0]?>">View</a></td>
+               <td><a href="Edit.php?Id=<?=$row[0]?>">Edit</a></td>
+                <td><a href="Delete.php?Id=<?=$row[0]?>">Delete</a></td>
+            </tr>
+       
+          <?php 
         }
                   
    }
-    
- 
-   
-    ?>
+   ?>
     </tbody>
   </table>
-
+               </div>
 
                   </form>   
                 

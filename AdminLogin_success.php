@@ -15,7 +15,7 @@
        
  <?php
  include 'connection.php';
- include 'login.php';
+ include 'Login.php';
     
        
           $AdminQuery="SELECT AdminName FROM Admin WHERE id='".$_SESSION['id']."' LIMIT 1";
@@ -29,7 +29,7 @@
 <body>
     <div class="container">
         
-    <div class="col-md-6 marginTop parentContainer center ">
+    <div class="col-md-6 marginTop successContainer center ">
         <h2>Welcome 
             <?php
         if(isset($AdminName))
@@ -38,10 +38,15 @@
         }
         
         ?></h2>
-            <p><a href="AdminLogin.php">Click here to view ur DashBord</a></p> 
+        <p class="lead center"><a href="AdminLogin.php">Click here to view ur DashBord</a></p> 
     </div>
-      
+       
     </div>
    
 </body>
+<script>
+
+            $(".successContainer").css("min-height", $(window).height()-100);
+        </script>
+       
 </html>

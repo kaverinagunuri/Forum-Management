@@ -15,7 +15,7 @@
        
  <?php
  include 'connection.php';
- include 'login.php';
+ include 'Login.php';
   $UserQuery="SELECT FirstName FROM UserData WHERE id='".$_SESSION['id']."' LIMIT 1";
            $UserResult=mysqli_query($link,$UserQuery);
            $row=mysqli_fetch_array($UserResult);
@@ -27,7 +27,7 @@
 <body>
     <div class="container">
         
-    <div class="col-md-6 marginTop parentContainer center ">
+    <div class="col-md-6 marginTop successContainer center ">
         <h2>Welcome 
             <?php
         if(isset($UserName))
@@ -36,7 +36,8 @@
         }
         
         ?></h2>
-           <p><a href="UserLogin.php">Click here to view ur DashBord</a></p> 
+        
+        <p class="center lead"><a href="UserLogin.php">Click here to view ur DashBord</a></p> 
         
         
         
@@ -45,4 +46,9 @@
     </div>
     
 </body>
+<script>
+
+            $(".successContainer").css("min-height", $(window).height()-100);
+        </script>
+       
 </html>

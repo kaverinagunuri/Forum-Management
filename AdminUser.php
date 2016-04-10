@@ -15,7 +15,7 @@
   </head>
   <?php
    
- include 'login.php';
+ include 'Login.php';
  include 'AdminSql.php';
  $AdminQuery="SELECT AdminName FROM Admin WHERE id='".$_SESSION['id']."' LIMIT 1";
            $result=mysqli_query($link,$AdminQuery);

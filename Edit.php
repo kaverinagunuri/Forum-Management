@@ -13,12 +13,16 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/validation.js"></script>
   </head>
-  <?php
+ <?php
+    include 'Login.php';
+include 'AdminSql.php';
    
- include 'Login.php';
- include 'UpdateUser.php';
- //print_r($_SESSION);
- $UserQuery="SELECT * FROM UserData WHERE id='".$_SESSION['id']."' LIMIT 1";
+    $AdminQuery = "SELECT AdminName FROM Admin WHERE Id='" . $_SESSION['id'] . "' LIMIT 1";
+    $result = mysqli_query($link, $AdminQuery);
+    $row = mysqli_fetch_array($result);
+    $AdminName = $row['AdminName'];
+    
+ $UserQuery="SELECT * FROM UserData WHERE Id='".$_GET['Id']."' LIMIT 1";
            $UserResult=mysqli_query($link,$UserQuery);
            $row=mysqli_fetch_array($UserResult);
           $UserName=$row['FirstName'];
@@ -28,7 +32,8 @@
           
           
        
-      ?>
+    ?>
+
       
       
      
@@ -58,19 +63,17 @@
                                    
                     <ul class="nav navbar-nav">
 
-                        <li><a href="UserLogin.php"> DashBoard</a></li>
+                       <li class="active"><a href="AdminLogin.php"> DashBoard</a></li>
 
-                        <li class="active"><a href="UserProfile.php">My Profile</a></li>
+                        <li><a href="AdminUser.php">Users</a></li>
 
-                        <li><a href="ChangePassword.php">Change Password</a></li>
-                         <li><a href="ViewProfile.php"> View Profile</a></li>
-                          <li><a href="index.php?logout=1">Logout</a></li>
+                        <li><a href="index.php?logout=1">Logout</a></li>
 
                     </ul>
                     <div class="navbar-form navbar-right">
                         <?php
-                      echo $UserName;
-                       ?>
+                        echo $AdminName;
+                        ?>
                     </div>
                  
                 </div>
@@ -93,7 +96,7 @@
                     
                     ?>
           <h3 >Update Profile</h3>
-      <div class="container childContainer col-md-10"> 
+       <div class="container childContainer col-md-10"> 
            
             <form class="form-group"  id="UserProfile" method="post" enctype="multipart/form-data" >
               
@@ -118,8 +121,8 @@
                  <div class="col-md-6 col-offset-3 marginTop">
                         <span class="form-group-addon glyphicon glyphicon-phone "></span>
                         <label for="Mobile">Mobile-Num</label>
-                        <input type="text" id="Mobile" name="Mobile" placeholder="Mobile number" maxlength="10" class="form-control" readonly value="<?php echo $UserMobile?>" />
-
+                       <input type="text" id="Mobile" name="Mobile" placeholder="Mobile number" maxlength="10" class="form-control" pattern="[0-9]{10}" required oninvalid="setCustomValidity('Plz enter on valid MobileNumber')" oninput="setCustomValidity('')" title="Mobile number should be 10 digit number" />
+                   
                  </div>
                     <div class="col-md-6 col-offset-3 marginTop">
                         <span class="form-group-addon glyphicon glyphicon-map "></span>
@@ -157,7 +160,7 @@
                    
                  </div>
                  <div class="col-md-6 col-offset-3 marginTop">
-                     <input type="submit" class="btn btn-success btn-lg" value="Update" name="Update" id="Update"/></div>
+                     <input type="submit" class="btn btn-success btn-lg" value="Update-User" name="Update-User" id="Update-User"/></div>
       
             </form></div>
            </div>

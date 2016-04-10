@@ -9,7 +9,7 @@ if ($_GET['logout'] == 1 AND $_SESSION['id']) {
 include("connection.php");
 if (isset($_POST['SignUp']) == "SignUp") {
     $error = "";
-    
+
     if (!$_POST['FirstName']) {
         $error.="please enter the FirstName<br/>";
     }
@@ -30,7 +30,7 @@ if (isset($_POST['SignUp']) == "SignUp") {
 
     else if (!$_POST['Mobile'])
         $error.="please enter the Mobile <br/>";
-   
+
     else {
         if (strlen($_POST['Password']) < 8)
             $error.="the length of pssword must be atleast 8 characters<br/>";
@@ -40,7 +40,7 @@ if (isset($_POST['SignUp']) == "SignUp") {
     if ($error)
         $error = "there were errors in your signup details<br/>" . $error;
     else {
-       $query = "SELECT * FROM UserData WHERE EmailId='" . mysqli_real_escape_string($link, $_POST['EmailId']) . "'";
+        $query = "SELECT * FROM UserData WHERE EmailId='" . mysqli_real_escape_string($link, $_POST['EmailId']) . "'";
         $result = mysqli_query($link, $query);
         $results = mysqli_num_rows($result);
         if ($results)
@@ -51,36 +51,32 @@ if (isset($_POST['SignUp']) == "SignUp") {
 
             mysqli_query($link, $query);
             $msg.="you were successfully signed!";
-            
         }
     }
 }
- if(isset($_POST['Login']))
-        { 
-            if($_POST['Login']=="Login"){
-            
-        $x=mysqli_real_escape_string($link,$_POST['UserEmail']); 
-        $y=($_POST['UserPassword']); 
-        if(($x=="kaveri.nagunuri@karmanya.co.in") &&($y=="kaveri"))
-        {
-             session_unset();
-            $_SESSION['id']=1; print_r($_SESSION);
-        header("Location:Adminlogin_success.php");
-        }
-        else{
-           $Credential="SELECT * FROM UserData WHERE EmailId='$x' AND Password='$y'";
-          $result1=mysqli_query($link,$Credential);
-            $row=mysqli_fetch_array($result1);
-            if($row){
-                 session_unset();
-                $_SESSION['id']=$row['Id'];
+if (isset($_POST['Login'])) {
+    if ($_POST['Login'] == "Login") {
+
+        $x = mysqli_real_escape_string($link, $_POST['UserEmail']);
+        $y = ($_POST['UserPassword']);
+        if (($x == "kaveri.nagunuri@karmanya.co.in") && ($y == "kaveri")) {
+            session_unset();
+            $_SESSION['id'] = 1;
+            print_r($_SESSION);
+            header("Location:AdminLogin_success.php");
+        } else {
+            $Credential = "SELECT * FROM UserData WHERE EmailId='$x' AND Password='$y'";
+            $result1 = mysqli_query($link, $Credential);
+            $row = mysqli_fetch_array($result1);
+            if ($row) {
+                session_unset();
+                $_SESSION['id'] = $row['Id'];
                 print_r($_SESSION);
                 header("Location:UserLogin_success.php");
-            }
-            else{
-                $error="we could not find a user with the email and password.Sign Up!!";
-            }
+            } else {
+                $error = "we could not find a user with the email and password.Sign Up!!";
             }
         }
-        }
+    }
+}
 ?>

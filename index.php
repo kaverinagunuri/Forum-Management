@@ -13,11 +13,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/validation.js"></script>
     
-        <script>
-
-            $(".parentContainer").css("min-height", $(window).height()-50);
-        </script>
-       
+      
  
 </head>
 <?php 
@@ -175,5 +171,10 @@ include 'forgotPassword.php';
 
     
   </body>
+    <script>
+
+            $(".parentContainer").css("min-height", $(window).height()-70);
+        </script>
+       
  
 </html>
