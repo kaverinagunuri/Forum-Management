@@ -14,15 +14,8 @@
         <script src="js/validation.js"></script>
     </head>
     <?php
-    include 'Login.php';
-    include 'UpdateUser.php';
-    $UserQuery = "SELECT * FROM UserData WHERE id='" . $_SESSION['id'] . "' LIMIT 1";
-    $UserResult = mysqli_query($link, $UserQuery);
-    $row = mysqli_fetch_array($UserResult);
-    $UserName = $row['FirstName'];
-    $UserLastName = $row['LastName'];
-    $UserEmail = $row['EmailId'];
-    $UserMobile = $row['Mobile']
+     include 'Login.php';
+     include 'UpdateUser.php';
     ?>
     <body>
 
@@ -64,9 +57,13 @@
 
                     </ul>
                     <div class="navbar-form navbar-right">
-<?php
-echo $UserName;
-?>
+                        <div class="sign">
+                        <img src="images/sign.jpeg" />
+                            <?php
+                      echo $UserName;
+                       ?>
+               </div>
+               </div>
                     </div>
 
                 </div>

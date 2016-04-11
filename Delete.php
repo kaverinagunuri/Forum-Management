@@ -16,10 +16,7 @@
     <?php
     include 'Login.php';
     include 'AdminSql.php';
-    $AdminQuery = "SELECT AdminName FROM Admin WHERE Id='" . $_SESSION['id'] . "' LIMIT 1";
-    $result = mysqli_query($link, $AdminQuery);
-    $row = mysqli_fetch_array($result);
-    $AdminName = $row['AdminName'];
+    
        
  $UserQuery="SELECT * FROM UserData WHERE Id='".$_GET['Id']."' LIMIT 1";
            $UserResult=mysqli_query($link,$UserQuery);
@@ -64,9 +61,12 @@
 
                     </ul>
                     <div class="navbar-form navbar-right">
-                        <?php
-                        echo $AdminName;
-                        ?>
+                        <div class="sign">
+                        <img src="images/sign.jpeg" />
+                            <?php
+                      echo $AdminName;
+                       ?>
+               </div>
                     </div>
                  
                 </div>

@@ -14,22 +14,9 @@
         <script src="js/validation.js"></script>
     </head>
     <?php
-    include 'connection.php';
+  
     include 'Login.php';
-    $UserQuery = "SELECT * FROM UserData WHERE id='" . $_SESSION['id'] . "' LIMIT 1";
-    $UserResult = mysqli_query($link, $UserQuery);
-    $row = mysqli_fetch_array($UserResult);
-    $UserName = $row['FirstName'];
-    $UserLastName = $row['LastName'];
-    $UserEmail = $row['EmailId'];
-    $UserMobile = $row['Mobile'];
-    $UserAdressOne = $row['AddressOne'];
-   
-    $UserAdressTwo = $row['AddressTwo'];
-    $UserCity = $row['City'];
-    $UserState = $row['State'];
-    $UserCountry = $row['Country'];
-    $UserZipCode = $row['ZipCode'];
+     include 'UpdateUser.php';
     ?>
     <body>
 
@@ -71,9 +58,13 @@
 
                     </ul>
                     <div class="navbar-form navbar-right">
-<?php
-echo $UserName;
-?>
+                         <div class="sign">
+                        <img src="images/sign.jpeg" />
+                            <?php
+                      echo $UserName;
+                       ?>
+               </div>
+               </div>
                     </div>
 
                 </div>
@@ -146,14 +137,42 @@ echo $UserName;
                         <span class="form-group-addon glyphicon glyphicon-map "></span>
                         <label for="ZipCode">ZipCode</label>
                         <input type="text" id="ZipCode" name="ZipCode" class="form-control" readonly value="<?php echo $UserZipCode?>" />
-
+                        <a href="Map.php">Click here To View Location</a>
+                       <a href="#" class="read" data-toggle="modal" data-target="#myModal" >Click Here to view location</a>
                  </div>
                 
             </form></div>
            </div>
-      
+           
+      <div class="modal fade" id="myModal" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">X</button>
+                                        <h4 class="modal-title">Location</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                       <?php
+                                      include 'Map.php';
+                                       
+                                       ?>
+                                        
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                 
+
+    
             </body>
-    <script src="js/bootstrap.min.js"></script>
+    
     <script>
 
         $(".UserContainer").css("min-height", $(window).height() - 50);

@@ -14,16 +14,10 @@
     <script src="js/validation.js"></script>
        
  <?php
- include 'connection.php';
+
  include 'Login.php';
-    
-       
-          $AdminQuery="SELECT AdminName FROM Admin WHERE id='".$_SESSION['id']."' LIMIT 1";
-           $result=mysqli_query($link,$AdminQuery);
-           $row=mysqli_fetch_array($result);
-          $AdminName=$row['AdminName'];
-         
- 
+ include 'AdminSql.php';
+  
  ?>
 </head>
 <body>

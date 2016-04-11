@@ -5,6 +5,15 @@
 
 
 include("connection.php");
+
+$AdminQuery = "SELECT AdminName FROM Admin WHERE Id='" . $_SESSION['id'] . "' LIMIT 1";
+    $result = mysqli_query($link, $AdminQuery);
+    $row = mysqli_fetch_array($result);
+    $AdminName = $row['AdminName'];
+
+
+
+
 if (isset($_POST['Add-User']) == "Add-User") {
     $error = "";
     

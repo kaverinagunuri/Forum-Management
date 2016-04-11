@@ -17,13 +17,8 @@
   <?php
  
  include 'Login.php';
- session_start();
-  $UserQuery="SELECT * FROM UserData WHERE id='".$_SESSION['id']."' LIMIT 1";
-           $UserResult=mysqli_query($link,$UserQuery);
-           $row=mysqli_fetch_array($UserResult);
-          $UserName=$row['FirstName'];
-          
-       
+ include 'UpdateUser.php';
+ 
  ?>
  
     <body data-type="scroll" >
@@ -68,9 +63,13 @@
 
                     </ul>
                     <div class="navbar-form navbar-right">
-                        <?php
+                        <div class="sign">
+                        <img src="images/sign.jpeg" />
+                            <?php
                       echo $UserName;
                        ?>
+               </div>
+                       
                     </div>
                  
                 </div>

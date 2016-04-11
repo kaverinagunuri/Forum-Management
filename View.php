@@ -17,12 +17,7 @@
 
     <?php
     include 'Login.php';
-
-   
-    $AdminQuery = "SELECT AdminName FROM Admin WHERE id='" . $_SESSION['id'] . "' LIMIT 1";
-    $result = mysqli_query($link, $AdminQuery);
-    $row = mysqli_fetch_array($result);
-    $AdminName = $row['AdminName'];
+    include 'AdminSql.php';
     ?>
 
     <body data-type="scroll" >
@@ -65,9 +60,12 @@
 
                     </ul>
                     <div class="navbar-form navbar-right">
-                        <?php
-                        echo $AdminName;
-                        ?>
+                        <div class="sign">
+                        <img src="images/sign.jpeg" />
+                            <?php
+                      echo $AdminName;
+                       ?>
+               </div>
                     </div>
 
                 </div>
@@ -127,18 +125,48 @@
                             </tbody>
                         </table>
                     </div>
+                    <a href="Map.php">Click here To View Location</a>
+                       <a href="#" class="read" data-toggle="modal" data-target="#myModal" >Click Here to view location</a>
 
                 </form>   
 
             </div>
 
         </div>
+               
+      <div class="modal fade" id="myModal" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">X</button>
+                                        <h4 class="modal-title">Location</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                       <?php
+                                      include 'Map.php';
+                                       
+                                       ?>
+                                        
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                 
+
+     </body>
 
 
-        <script src="js/bootstrap.min.js"></script>
+       
         <script>
 
             $(".UserContainer").css("min-height", $(window).height() - 100);
         </script>
-    </body>
+   
 </html>

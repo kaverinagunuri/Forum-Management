@@ -17,18 +17,7 @@
    
  include 'Login.php';
  include 'UpdateUser.php';
- //print_r($_SESSION);
- $UserQuery="SELECT * FROM UserData WHERE id='".$_SESSION['id']."' LIMIT 1";
-           $UserResult=mysqli_query($link,$UserQuery);
-           $row=mysqli_fetch_array($UserResult);
-          $UserName=$row['FirstName'];
-          $UserLastName=$row['LastName'];
-          $UserEmail=$row['EmailId'];
-          $UserMobile=$row['Mobile']
-          
-          
-       
-      ?>
+  ?>
       
       
      
@@ -68,9 +57,13 @@
 
                     </ul>
                     <div class="navbar-form navbar-right">
-                        <?php
+                       <div class="sign">
+                        <img src="images/sign.jpeg" />
+                            <?php
                       echo $UserName;
                        ?>
+               </div>
+               </div>
                     </div>
                  
                 </div>

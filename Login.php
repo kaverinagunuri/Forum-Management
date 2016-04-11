@@ -2,6 +2,9 @@
 
 error_reporting(0);
 session_start();
+
+
+
 if ($_GET['logout'] == 1 AND $_SESSION['id']) {
     session_destroy();
     $msg = "you have been successfully logged out!";

@@ -2,8 +2,27 @@
 
 error_reporting(0);
 include("connection.php");
+$UserQuery = "SELECT * FROM UserData WHERE id='" . $_SESSION['id'] . "' LIMIT 1";
+    $UserResult = mysqli_query($link, $UserQuery);
+    $row = mysqli_fetch_array($UserResult);
+    $UserName = $row['FirstName'];
+    $UserLastName = $row['LastName'];
+    $UserEmail = $row['EmailId'];
+    $UserMobile = $row['Mobile'];
+    $UserAdressOne = $row['AddressOne'];
+   
+    $UserAdressTwo = $row['AddressTwo'];
+    $UserCity = $row['City'];
+    $UserState = $row['State'];
+    $UserCountry = $row['Country'];
+    $UserZipCode = $row['ZipCode'];
+
+
+
+
+
 if (isset($_POST['Update']) == "Update") {
-    print_r($_SESSION);
+   
     $error = "";
 
     if (!$_POST['AddressOne']) {
@@ -39,8 +58,6 @@ if (isset($_POST['Update']) == "Update") {
 }
 if (isset($_POST['ChangePassword']) == "ChangePassword") {
     $OldPassword = $_POST['OldPassword'];
-   
-
     $NewPassword = $_POST['Password'];
     if (!$_POST['Password'])
         $error.="please enter the Password <br/>";
@@ -59,12 +76,13 @@ if (isset($_POST['ChangePassword']) == "ChangePassword") {
     if ($error)
         $error = "there were errors in your signup details<br/>" . $error;
     else {
-        $query = "SELECT * FROM UserData WHERE Password='" . mysqli_real_escape_string($link, $_POST['OldPassword']) ."'";
+       
+        $query = "SELECT * FROM UserData WHERE Password=='" . ($_POST['OldPassword']) ."'";
         $result = mysqli_query($link, $query);
         $results = mysqli_num_rows($result);
-    
+   
         if ($results) {
-            $SetPasswordQuery = "UPDATE UserData SET Password='" . mysqli_real_escape_string($link, $_POST['Password']) . "'WHERE id='" . $_SESSION['id'] . "' LIMIT 1 ";
+            $SetPasswordQuery = "UPDATE UserData SET Password='" .($_POST['Password']) . "'WHERE id='" . $_SESSION['id'] . "' LIMIT 1 ";
             $SetPasswordResult = mysqli_query($link, $SetPasswordQuery);
             $SetPasswordRow = mysqli_fetch_array($SetPasswordResult);
             $msg.="updated";

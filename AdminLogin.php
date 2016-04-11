@@ -18,25 +18,8 @@
   <?php
   
  include 'Login.php';
- 
- session_start();
-    
-       
-          $AdminQuery="SELECT AdminName FROM Admin WHERE id='".$_SESSION['id']."' LIMIT 1";
-           $result=mysqli_query($link,$AdminQuery);
-           $row=mysqli_fetch_array($result);
-          $AdminName=$row['AdminName'];
-          if(isset($_POST['View']))
-          {
-              //print_r($_SESSION['EmailId']);
-           //header("Location:View.php");
-          }
-           if(isset($_POST['Update']))
-           header("Location:Update.php");
-            if(isset($_POST['Delete']))
-           header("Location:Delete.php");
-         
- 
+ include 'AdminSql.php';
+
  ?>
  
     <body data-type="scroll" >
@@ -79,9 +62,12 @@
 
                     </ul>
                     <div class="navbar-form navbar-right">
-                        <?php
+                        <div class="sign">
+                        <img src="images/sign.jpeg" />
+                            <?php
                       echo $AdminName;
                        ?>
+               </div>
                     </div>
                  
                 </div>
