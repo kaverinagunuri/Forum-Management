@@ -21,8 +21,7 @@ if (isset($_POST['ForgotSubmit'])) {
 
         $mail->Host = "mail.gmail.com"; // SMTP server
 
-        $mail->SMTPDebug = 0;                     // enables SMTP debug information (for testing)
-// 1 = errors and messages
+        $mail->SMTPDebug = 0;                    
         $mail->SMTPAuth = true;                  // enable SMTP authentication
 
         $mail->SMTPSecure = "tls";                 // sets the prefix to the servier

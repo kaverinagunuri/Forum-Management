@@ -30,11 +30,7 @@ echo $Variable;
                     var latitude = results[0].geometry.location.lat();
                     var longitude = results[0].geometry.location.lng();
 
-                }
-
-
-
-                var myCenter = new google.maps.LatLng(latitude, longitude);
+                } var myCenter = new google.maps.LatLng(latitude, longitude);
 
 
                 function initialize()

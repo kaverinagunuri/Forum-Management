@@ -29,29 +29,27 @@ $Row = mysqli_fetch_all($result);
 
 
                 $('#example').DataTable({
-                    data: Data,
-                    columns: [
+                data: Data,
+                        columns: [
                         {title: "Id"},
                         {title: "Firstname"},
                         {title: "Lastname"},
                         {title: "EmailId"}
-                    ]
-
-                });
-
-
-                var table = $('#example').DataTable();
-
-                $('#example tbody').on('click', 'tr', function () {
-                    var data = table.row(this).data();
-
-                    window.location.href = "View.php?Id=" + data[0];
-
-
-                });
+                        ]
+                        
             });
 
 
+            var table = $('#example').DataTable();
+
+            $('#example tbody').on('click', 'tr', function () {
+                var data = table.row(this).data();
+
+                window.location.href = "View.php?Id=" + data[0];
+
+
+            });
+            });
         </script>
 
 
@@ -113,7 +111,7 @@ $Row = mysqli_fetch_all($result);
                 <form class="form-group"  id="UserProfile" method="post" enctype="multipart/form-data" >
 
 
-                    <table id="example" class="display" width="100%">
+                    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     </table>
 
                 </form>   

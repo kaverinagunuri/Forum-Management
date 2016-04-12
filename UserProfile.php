@@ -48,11 +48,12 @@
 
                     <li><a href="UserLogin.php"> DashBoard</a></li>
 
-                    <li class="active"><a href="UserProfile.php">My Profile</a></li>
 
-                    <li><a href="ChangePassword.php">Change Password</a></li>
-                    <li><a href="ViewProfile.php"> View Profile</a></li>
-                    <li><a href="index.php?logout=1">Logout</a></li>
+                    <li class="active"><a href="UserProfile.php"><span class="glyphicon glyphicon-user">My Profile</span></a></li>
+
+                    <li><a href="ChangePassword.php"><span class="glyphicon glyphicon-pencil">Change Password</span></a></li>
+                    <li><a href="ViewProfile.php"> <span class="glyphicon glyphicon-eye-open">View Profile</span></a></li>
+                    <li><a href="index.php?logout=1"><span class="glyphicon glyphicon-off">Logout</span></a></li>
 
                 </ul>
                 <div class="navbar-form navbar-right">

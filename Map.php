@@ -17,7 +17,7 @@ echo $Variable;
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
         <script
-            src="http://maps.googleapis.com/maps/api/js">
+            src="ht.tp://maps.googleapis.com/maps/api/js">
         </script>
         <script type="text/javascript">
 
