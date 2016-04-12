@@ -23,12 +23,7 @@
  ?>
  
     <body data-type="scroll" >
-
-
-
- 
-     
-      <div class="nav navbar-default">
+<div class="nav navbar-default">
 
             <div class="container">
 
@@ -111,6 +106,7 @@ $result = mysqli_query($link, $sql);
                 <td><?php echo $row[0]?></td>
                 <td><?php echo $row[1]?></td>
                 <td><?php echo $row[2]?></td>
+                <td><?php echo $row[3]?></td>
               <td><a href="View.php?Id=<?=$row[0]?>">View</a></td>
                <td><a href="Edit.php?Id=<?=$row[0]?>">Edit</a></td>
                 <td><a href="Delete.php?Id=<?=$row[0]?>">Delete</a></td>

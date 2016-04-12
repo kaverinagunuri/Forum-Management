@@ -14,7 +14,7 @@
         <script src="js/validation.js"></script>
     </head>
     <?php
-     include 'Login.php';
+    include 'Login.php';
      include 'UpdateUser.php';
     ?>
     <body>

@@ -12,12 +12,18 @@
         <script src="js/jquery-2.2.2.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/validation.js"></script>
+        
     </head>
 
 
     <?php
     include 'Login.php';
     include 'AdminSql.php';
+    session_start();
+    $id=$_SESSION['id'];
+    if(!$id){
+        header("Location:index.php");
+    }
     ?>
 
     <body data-type="scroll" >
@@ -61,11 +67,11 @@
                     </ul>
                     <div class="navbar-form navbar-right">
                         <div class="sign">
-                        <img src="images/sign.jpeg" />
+                            <img src="images/sign.jpeg" />
                             <?php
-                      echo $AdminName;
-                       ?>
-               </div>
+                            echo $AdminName;
+                            ?>
+                        </div>
                     </div>
 
                 </div>
@@ -78,9 +84,10 @@
                 <form class="form-group"  id="UserProfile" method="post" enctype="multipart/form-data" >
 
                     <?php
-                  $UserQuery="SELECT * FROM UserData WHERE Id='".$_GET['Id']."' LIMIT 1";
-           $UserResult=mysqli_query($link,$UserQuery);
-           ?>
+                    $UserQuery = "SELECT * FROM UserData WHERE Id='" . $_GET['Id'] . "' LIMIT 1";
+                    $UserResult = mysqli_query($link, $UserQuery);
+                    $id = $_GET['Id'];
+                    ?>
 
                     <div class="table-responsive">          
                         <table class="table">
@@ -122,51 +129,71 @@
                                     <?php
                                 }
                                 ?>
+
                             </tbody>
                         </table>
                     </div>
+                   
+                    <input type="button" class="btn btn-success" id="Edit" value="Edit"/>
+                     <input type="button" class="btn btn-success" id="Delete" value="Delete"/>
                     <a href="Map.php">Click here To View Location</a>
-                       <a href="#" class="read" data-toggle="modal" data-target="#myModal" >Click Here to view location</a>
+                    <a href="#" class="read" data-toggle="modal" data-target="#myModal" >Click Here to view location</a>
 
-                </form>   
-
+                </form> 
+               
             </div>
 
         </div>
-               
-      <div class="modal fade" id="myModal" role="dialog">
-                            <div class="modal-dialog">
 
-                                <!-- Modal content-->
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">X</button>
-                                        <h4 class="modal-title">Location</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                       <?php
-                                      include 'Map.php';
-                                       
-                                       ?>
-                                        
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
 
-                            </div>
-                        </div>
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">X</button>
+                        <h4 class="modal-title">Location</h4>
+                    </div>
+                    <div class="modal-body">
+                        <?php
+                        include 'Map.php';
+                        ?>
 
-                 
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
 
-     </body>
+            </div>
+        </div>
 
 
+
+    </body>
+
+
+
+    <script>
+        
+
+        $(".UserContainer").css("min-height", $(window).height() - 100);
        
-        <script>
+            $(document).ready(function(){
+                $("#Edit").click(function(){
+                   
+                   window.location.href="Edit.php?Id=<?php echo $id; ?>"; 
+                });
+               
+            });
+             $(document).ready(function(){
+                $("#Delete").click(function(){
+                   
+                   window.location.href="Delete.php?Id=<?php echo $id; ?>"; 
+                });
+               
+            });
+      
+    </script>
 
-            $(".UserContainer").css("min-height", $(window).height() - 100);
-        </script>
-   
 </html>

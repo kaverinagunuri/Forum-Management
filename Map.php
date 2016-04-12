@@ -2,8 +2,8 @@
 
 include 'Login.php';
 include 'UpdateUser.php';
-$variable=$row['AddressTwo']."&nbsp;".$row['City']."&nbsp;".$row['State']."&nbsp;".$row['Country'];
-echo $variable;
+$Variable=$row['AddressOne']."$nbsp".$row['AddressTwo']."&nbsp;".$row['City']."&nbsp;".$row['State']."&nbsp;".$row['Country'];
+echo $Variable;
  ?>
 
 <!DOCTYPE html>
@@ -18,7 +18,7 @@ src="http://maps.googleapis.com/maps/api/js">
     <script type="text/javascript">
 
 var geocoder = new google.maps.Geocoder();
-var address = "<?php echo $variable;?>";
+var address = "<?php echo $Variable;?>";
 
     
 geocoder.geocode( { 'address': address}, function(results, status) {

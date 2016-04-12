@@ -5,7 +5,7 @@ include("PHPMailer-master/class.smtp.php"); // optional, gets called from within
  
 $mail             = new PHPMailer();
 
-$body             = "haiiii";
+$body             = "registration has been successfully completed";
 //$body             = eregi_replace("[\]",'',$body);
 $mail->IsSMTP(); // telling the class to use SMTP
 
@@ -33,16 +33,17 @@ $mail->AddReplyTo("kaveri.nagunuri@karmanya.co.in","kaveri");
 $mail->Subject    = "PHPMailer Test Subject via smtp (Gmail), basic";
 $mail->AltBody    = "To view the message, please use an HTML compatible email viewer!"; // optional, comment out and test
 $mail->MsgHTML($body);
-$address = "kaveri.nagunuri@karmanya.co.in";
-$mail->AddAddress($address, "John Doe");
+
+$address =mysqli_real_escape_string($link, $_POST['EmailId']) ;
+$mail->AddAddress($address, "Success");
 //$mail->AddAttachment("images/phpmailer.gif");      // attachment
 //$mail->AddAttachment("images/phpmailer_mini.gif"); // attachment
 if(!$mail->Send()) {
 
-echo "Mailer Error: " . $mail->ErrorInfo;
+$error.= "Mailer Error: " . $mail->ErrorInfo;
 
 } else {
 
-echo "The password is sent to ur emailID";
+$msg.="The password is sent to ur emailID";
 
 }?>

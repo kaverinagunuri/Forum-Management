@@ -32,7 +32,7 @@
         }
         
         ?></h2>
-        <p class="lead center"><a href="AdminLogin.php">Click here to view ur DashBord</a></p> 
+        <p class="lead center"><a href="AdminLoginJS.php">Click here to view ur DashBord</a></p> 
     </div>
        
     </div>

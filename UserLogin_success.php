@@ -18,8 +18,8 @@
  include 'Login.php';
   $UserQuery="SELECT FirstName FROM UserData WHERE id='".$_SESSION['id']."' LIMIT 1";
            $UserResult=mysqli_query($link,$UserQuery);
-           $row=mysqli_fetch_array($UserResult);
-          $UserName=$row['FirstName'];
+           $Row=mysqli_fetch_array($UserResult);
+          $UserName=$Row['FirstName'];
           
        
  ?>

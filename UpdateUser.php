@@ -77,18 +77,18 @@ if (isset($_POST['ChangePassword']) == "ChangePassword") {
         $error = "there were errors in your signup details<br/>" . $error;
     else {
        
-        $query = "SELECT * FROM UserData WHERE Password=='" . ($_POST['OldPassword']) ."'";
+        $query = "SELECT * FROM UserData WHERE Password='" . ($_POST['OldPassword']) ."'";
         $result = mysqli_query($link, $query);
         $results = mysqli_num_rows($result);
    
-        if ($results) {
+        if ($result) {
             $SetPasswordQuery = "UPDATE UserData SET Password='" .($_POST['Password']) . "'WHERE id='" . $_SESSION['id'] . "' LIMIT 1 ";
             $SetPasswordResult = mysqli_query($link, $SetPasswordQuery);
             $SetPasswordRow = mysqli_fetch_array($SetPasswordResult);
             $msg.="updated";
            
         } else {
-            $error = "The email address is already registered .if U want to login IN?";
+            $error = "error in Upating pasword?";
         }
     }
 

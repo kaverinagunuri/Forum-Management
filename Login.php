@@ -54,6 +54,8 @@ if (isset($_POST['SignUp']) == "SignUp") {
 
             mysqli_query($link, $query);
             $msg.="you were successfully signed!";
+            
+            include 'PhpMailer.php';
         }
     }
 }

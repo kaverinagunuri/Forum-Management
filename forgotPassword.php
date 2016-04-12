@@ -15,7 +15,7 @@ include("PHPMailer-master/class.smtp.php"); // optional, gets called from within
  
 $mail             = new PHPMailer();
 
-$body             = "The Password of .$ForgotEmail. is .$RetrivePassword.";
+$body             = "The Password of ".$ForgotEmail. "is" .$RetrivePassword;
 //$body             = eregi_replace("[\]",'',$body);
 $mail->IsSMTP(); // telling the class to use SMTP
 
@@ -39,12 +39,12 @@ $mail->Password   = "K@veri2710";            // GMAIL password
  
 
 $mail->SetFrom('kaveri.nagunuri@karmanya.co.in', 'kaveri');
-$mail->AddReplyTo("$ForgotEmail","$FirstName");
+$mail->AddReplyTo('kaveri.nagunuri@karmanya.co.in', 'kaveri');
 $mail->Subject    = "PHPMailer Test Subject via smtp (Gmail), basic";
 $mail->AltBody    = "To view the message, please use an HTML compatible email viewer!"; // optional, comment out and test
 $mail->MsgHTML($body);
 $address = "kaveri.nagunuri@karmanya.co.in";
-$mail->AddAddress($address, "John Doe");
+$mail->AddAddress($ForgotEmail, $FirstName);
 //$mail->AddAttachment("images/phpmailer.gif");      // attachment
 //$mail->AddAttachment("images/phpmailer_mini.gif"); // attachment
 if(!$mail->Send()) {
