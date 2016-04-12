@@ -140,7 +140,7 @@
                     <span class="form-group-addon glyphicon glyphicon-map "></span>
                     <label for="ZipCode">ZipCode</label>
                     <input type="text" id="ZipCode" name="ZipCode" class="form-control" readonly value="<?php echo $UserZipCode ?>" />
-                    <a href="USerMap.php">Click here To View Location</a>
+                  
                     <a href="#" class="read" data-toggle="modal" data-target="#myModal" >Click Here to view location</a>
                 </div>
 

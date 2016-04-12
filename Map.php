@@ -3,11 +3,11 @@ include 'Login.php';
 //include 'UpdateUser.php';
 $UserQuery = "SELECT AddressOne,AddressTwo, City FROM UserData WHERE Id='" . $_GET['Id'] . "' LIMIT 1";
 $UserResult = mysqli_query($link, $UserQuery);
-$address=mysqli_fetch_array($UserResult);
-  
+$address = mysqli_fetch_array($UserResult);
 
-$Variable = $address['1']." ".$address['2'];
-        echo $Variable;
+
+$Variable = $address['1'] . " " . $address['2'];
+echo $Variable;
 ?>
 
 <!DOCTYPE html>
@@ -38,6 +38,7 @@ $Variable = $address['1']." ".$address['2'];
 
                 var myCenter = new google.maps.LatLng(latitude, longitude);
 
+
                 function initialize()
                 {
                     var mapProp = {
@@ -50,16 +51,24 @@ $Variable = $address['1']." ".$address['2'];
 
                     var marker = new google.maps.Marker({
                         position: myCenter,
+                        title: 'Click to zoom'
                     });
 
                     marker.setMap(map);
-                }
 
-                google.maps.event.addDomListener(window, 'load', initialize);
-                 $("#myModal").on("shown.bs.modal",function(){
-                    google.maps.event.trigger(googleMap,"resize");
+// Zoom to 9 when clicking on marker
+                    google.maps.event.addListener(marker, 'click', function () {
+                        map.setZoom(9);
+                        map.setCenter(marker.getPosition());
+                    });
+                     
+                $("#myModal").on("shown.bs.modal", function () {
+                    google.maps.event.trigger(googleMap, "resize");
                     return map.setCenter(myCenter);
                 });
+                }
+                google.maps.event.addDomListener(window, 'load', initialize);
+               
 
             });
 

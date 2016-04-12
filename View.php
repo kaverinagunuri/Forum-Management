@@ -111,21 +111,21 @@
                             </thead>
                             <tbody>
                                 <?php
-                                while ($row = mysqli_fetch_row($UserResult)) {
+                                while ($Row = mysqli_fetch_row($UserResult)) {
                                     ?>
                                     <tr>
-                                        <td><?php echo $row[0] ?></td>
-                                        <td><?php echo $row[1] ?></td>
-                                        <td><?php echo $row[2] ?></td>
-                                        <td><?php echo $row[3] ?></td>
-                                        <td><?php echo $row[4] ?></td>
-                                        <td><?php echo $row[5] ?></td>
-                                        <td><?php echo $row[6] ?></td>
-                                        <td><?php echo $row[7] ?></td>
-                                        <td><?php echo $row[8] ?></td>
-                                        <td><?php echo $row[9] ?></td>
-                                        <td><?php echo $row[10] ?></td>
-                                        <td><?php echo $row[11] ?></td>
+                                        <td><?php echo $Row[0] ?></td>
+                                        <td><?php echo $Row[1] ?></td>
+                                        <td><?php echo $Row[2] ?></td>
+                                        <td><?php echo $Row[3] ?></td>
+                                        <td><?php echo $Row[4] ?></td>
+                                        <td><?php echo $Row[5] ?></td>
+                                        <td><?php echo $Row[6] ?></td>
+                                        <td><?php echo $Row[7] ?></td>
+                                        <td><?php echo $Row[8] ?></td>
+                                        <td><?php echo $Row[9] ?></td>
+                                        <td><?php echo $Row[10] ?></td>
+                                        <td><?php echo $Row[11] ?></td>
                                     </tr>
                                     <?php
                                 }
@@ -137,7 +137,7 @@
 
                     <input type="button" class="btn btn-success" id="Edit" value="Edit"/>
                     <input type="button" class="btn btn-success" id="Delete" value="Delete"/>
-                    <a href="Map.php?Id=<?php echo $id; ?>">Click here To View Location</a>
+                   
                     <a href="#" class="read" data-toggle="modal" data-target="#myModal" >Click Here to view location</a>
 
                 </form> 

@@ -78,11 +78,11 @@ if (isset($_POST['ChangePassword']) == "ChangePassword") {
         $error = "there were errors in your signup details<br/>" . $error;
     else {
 
-        $query = "SELECT * FROM UserData WHERE Password='" . ($_POST['OldPassword']) . "'";
-        $result = mysqli_query($link, $query);
-        $results = mysqli_num_rows($result);
+        $Query = "SELECT * FROM UserData WHERE Password='" . ($_POST['OldPassword']) . "'";
+        $Result = mysqli_query($link, $Query);
+        $Rows = mysqli_num_rows($Result);
 
-        if ($results) {
+        if ($Rows) {
             $SetPasswordQuery = "UPDATE UserData SET Password='" . ($_POST['Password']) . "'WHERE id='" . $_SESSION['id'] . "' LIMIT 1 ";
             $SetPasswordResult = mysqli_query($link, $SetPasswordQuery);
             $SetPasswordRow = mysqli_fetch_array($SetPasswordResult);

@@ -73,10 +73,10 @@ echo $AdminName;
                 <form class="form-group"  id="UserProfile" method="post" enctype="multipart/form-data" >
 
 <?php
-$sql = "SELECT Id,FirstName,LastName,EmailId FROM UserData";
-$result = mysqli_query($link, $sql);
+$Query = "SELECT Id,FirstName,LastName,EmailId FROM UserData";
+$Result = mysqli_query($link, $Query);
 
-if (mysqli_num_rows($result) > 0) {
+if (mysqli_num_rows($Result) > 0) {
     // output data of each row
     ?>
                         <div class="table-responsive">          
@@ -92,13 +92,13 @@ if (mysqli_num_rows($result) > 0) {
                                 </thead>
                                 <tbody>
     <?php
-    while ($row = mysqli_fetch_row($result)) {
+    while ($Row = mysqli_fetch_row($result)) {
         ?>
 
                                         <tr>
-                                            <td><?php echo $row[0] ?></td>
-                                            <td><?php echo $row[1] ?></td>
-                                            <td><?php echo $row[2] ?></td>
+                                            <td><?php echo $Row[0] ?></td>
+                                            <td><?php echo $Row[1] ?></td>
+                                            <td><?php echo $Row[2] ?></td>
                                             <td><?php echo $row[3] ?></td>
                                             <td><a href="View.php?Id=<?= $row[0] ?>">View</a></td>
                                             <td><a href="Edit.php?Id=<?= $row[0] ?>">Edit</a></td>

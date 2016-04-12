@@ -43,16 +43,16 @@ if (isset($_POST['SignUp']) == "SignUp") {
     if ($error)
         $error = "there were errors in your signup details<br/>" . $error;
     else {
-        $query = "SELECT * FROM UserData WHERE EmailId='" . mysqli_real_escape_string($link, $_POST['EmailId']) . "'";
-        $result = mysqli_query($link, $query);
-        $results = mysqli_num_rows($result);
-        if ($results)
+        $Query = "SELECT * FROM UserData WHERE EmailId='" . mysqli_real_escape_string($link, $_POST['EmailId']) . "'";
+        $Result = mysqli_query($link, $Query);
+        $Rows= mysqli_num_rows($Result);
+        if ($Rows)
             $error = "The email address is already registered .if U want to login IN?";
         else {
-            $query = "INSERT INTO UserData (FirstName,LastName,EmailId,Mobile,Password) VALUES('" . ($_POST['FirstName']) . "','" . ($_POST['LastName']) . "','" . mysqli_real_escape_string($link, $_POST['EmailId']) . "','" . ($_POST['Mobile']) . "', '" . ($_POST['Password']) . "')";
+            $Query = "INSERT INTO UserData (FirstName,LastName,EmailId,Mobile,Password) VALUES('" . ($_POST['FirstName']) . "','" . ($_POST['LastName']) . "','" . mysqli_real_escape_string($link, $_POST['EmailId']) . "','" . ($_POST['Mobile']) . "', '" . ($_POST['Password']) . "')";
 
 
-            mysqli_query($link, $query);
+            mysqli_query($link, $Query);
             $msg.="you were successfully signed!";
 
             include 'PhpMailer.php';
@@ -71,11 +71,11 @@ if (isset($_POST['Login'])) {
             header("Location:AdminLogin_success.php");
         } else {
             $Credential = "SELECT * FROM UserData WHERE EmailId='$x' AND Password='$y'";
-            $result1 = mysqli_query($link, $Credential);
-            $row = mysqli_fetch_array($result1);
-            if ($row) {
+            $Result = mysqli_query($link, $Credential);
+            $Rows = mysqli_fetch_array($Result);
+            if ($Rows) {
                 session_unset();
-                $_SESSION['id'] = $row['Id'];
+                $_SESSION['id'] = $Rows['Id'];
                 print_r($_SESSION);
                 header("Location:UserLogin_success.php");
             } else {
