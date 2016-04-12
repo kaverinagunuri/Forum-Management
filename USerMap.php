@@ -1,10 +1,11 @@
 <?php
 include 'Login.php';
-//include 'UpdateUser.php';
-$UserQuery = "SELECT AddressOne,AddressTwo, City FROM UserData WHERE Id='" . $_GET['Id'] . "' LIMIT 1";
-$UserResult = mysqli_query($link, $UserQuery);
-$address=mysqli_fetch_array($UserResult);
-  
+include 'UpdateUser.php';
+
+    $UserQuery = "SELECT AddressOne,AddressTwo, City FROM UserData WHERE Id='" . $_SESSION['id'] . "' LIMIT 1";
+    $UserResult = mysqli_query($link, $UserQuery);
+    $address = mysqli_fetch_array($UserResult);
+ 
 
 $Variable = $address['1']." ".$address['2'];
         echo $Variable;
@@ -15,10 +16,7 @@ $Variable = $address['1']." ".$address['2'];
     <head>
 
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-
-        <script
-            src="http://maps.googleapis.com/maps/api/js">
-        </script>
+        <script src="http://maps.googleapis.com/maps/api/js"></script>
         <script type="text/javascript">
 
             var geocoder = new google.maps.Geocoder();
@@ -48,7 +46,7 @@ $Variable = $address['1']." ".$address['2'];
 
                     var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 
-                    var marker = new google.maps.Marker({
+                   var marker = new google.maps.Marker({
                         position: myCenter,
                     });
 
@@ -56,11 +54,13 @@ $Variable = $address['1']." ".$address['2'];
                 }
 
                 google.maps.event.addDomListener(window, 'load', initialize);
-                 $("#myModal").on("shown.bs.modal",function(){
+                
+        $("#myModal").on("shown.bs.modal",function(){
                     google.maps.event.trigger(googleMap,"resize");
                     return map.setCenter(myCenter);
                 });
-
+                
+                
             });
 
         </script>

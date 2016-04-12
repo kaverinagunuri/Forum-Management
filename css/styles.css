@@ -9,7 +9,7 @@
     background-image: url("../images/bg.jpg");
     margin: 0;
     width: 100%;
-   
+
     background-size: cover;
 }
 h2{
@@ -33,12 +33,12 @@ h2{
 }
 
 .UserContainer{
-     background-image: url("../images/User.jpg");
+    background-image: url("../images/User.jpg");
     margin: 0;
     width: 100%;
-    
- background-size: cover;
-    
+
+    background-size: cover;
+
 }
 .adminContainer{
     background-color: black
@@ -48,12 +48,12 @@ h2{
     background-image: url("../images/success.jpg");
     margin: 0;
     width: 100%;
-       padding-top: 100px;
+    padding-top: 100px;
     background-size: cover;
 }
 .sign {
-            left:5px;
-            position:relative;
-          
-          
-        }
+    left:5px;
+    position:relative;
+
+
+}

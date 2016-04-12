@@ -1,29 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login-Success</title>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Login-Success</title>
 
-  
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
-     <script src="js/jquery-2.2.2.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/validation.js"></script>
-  </head>
-  
-  
-  <?php
-  
- include 'Login.php';
- include 'AdminSql.php';
 
- ?>
- 
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/styles.css" rel="stylesheet">
+        <script src="js/jquery-2.2.2.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/validation.js"></script>
+    </head>
+
+
+    <?php
+    include 'Login.php';
+    include 'AdminSql.php';
+    ?>
+
     <body data-type="scroll" >
-<div class="nav navbar-default">
+        <div class="nav navbar-default">
 
             <div class="container">
 
@@ -46,10 +44,10 @@
                 </div>
 
                 <div class="collapse navbar-collapse">
-                                   
+
                     <ul class="nav navbar-nav">
 
-                        <li class="active"><a href="AdminLogin.php"> DashBoard</a></li>
+                        <li class="active"><a href="AdminLoginJS.php"> DashBoard</a></li>
 
                         <li><a href="AdminUser.php">Users</a></li>
 
@@ -58,80 +56,74 @@
                     </ul>
                     <div class="navbar-form navbar-right">
                         <div class="sign">
-                        <img src="images/sign.jpeg" />
-                            <?php
-                      echo $AdminName;
-                       ?>
-               </div>
+                            <img src="images/sign.jpeg" />
+<?php
+echo $AdminName;
+?>
+                        </div>
                     </div>
-                 
+
                 </div>
-                
+
             </div>
 
         </div>
         <div class="container UserContainer">
             <div class="container childContainer">
-                  <form class="form-group"  id="UserProfile" method="post" enctype="multipart/form-data" >
-                
-    <?php
-    
+                <form class="form-group"  id="UserProfile" method="post" enctype="multipart/form-data" >
 
+<?php
 $sql = "SELECT Id,FirstName,LastName,EmailId FROM UserData";
 $result = mysqli_query($link, $sql);
 
-   if (mysqli_num_rows($result) > 0) {
+if (mysqli_num_rows($result) > 0) {
     // output data of each row
-   
-       
-       ?>
-               <div class="table-responsive">          
-  <table class="table">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>FirstName</th>
-        <th>LastName</th>
-        <th>EmailId</th>
-       
-      </tr>
-    </thead>
-    <tbody>
+    ?>
+                        <div class="table-responsive">          
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>FirstName</th>
+                                        <th>LastName</th>
+                                        <th>EmailId</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+    <?php
+    while ($row = mysqli_fetch_row($result)) {
+        ?>
+
+                                        <tr>
+                                            <td><?php echo $row[0] ?></td>
+                                            <td><?php echo $row[1] ?></td>
+                                            <td><?php echo $row[2] ?></td>
+                                            <td><?php echo $row[3] ?></td>
+                                            <td><a href="View.php?Id=<?= $row[0] ?>">View</a></td>
+                                            <td><a href="Edit.php?Id=<?= $row[0] ?>">Edit</a></td>
+                                            <td><a href="Delete.php?Id=<?= $row[0] ?>">Delete</a></td>
+                                        </tr>
+
         <?php
- 
-        while($row = mysqli_fetch_row($result)) {
-            ?>
-       
-         <tr>
-                <td><?php echo $row[0]?></td>
-                <td><?php echo $row[1]?></td>
-                <td><?php echo $row[2]?></td>
-                <td><?php echo $row[3]?></td>
-              <td><a href="View.php?Id=<?=$row[0]?>">View</a></td>
-               <td><a href="Edit.php?Id=<?=$row[0]?>">Edit</a></td>
-                <td><a href="Delete.php?Id=<?=$row[0]?>">Delete</a></td>
-            </tr>
-       
-          <?php 
-        }
-                  
-   }
-   ?>
-    </tbody>
-  </table>
-               </div>
+    }
+}
+?>
+                            </tbody>
+                        </table>
+                    </div>
 
-                  </form>   
-                
+                </form>   
+
             </div>
-            
-        </div>
-        
 
-  <script src="js/bootstrap.min.js"></script>
+        </div>
+
+
+        <script src="js/bootstrap.min.js"></script>
         <script>
 
-            $(".UserContainer").css("min-height", $(window).height()-100);
+            $(".UserContainer").css("min-height", $(window).height() - 100);
         </script>
-  </body>
+    </body>
 </html>

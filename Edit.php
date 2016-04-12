@@ -19,9 +19,9 @@ include 'AdminSql.php';
    
  $UserQuery="SELECT * FROM UserData WHERE Id='".$_GET['Id']."' LIMIT 1";
            $UserResult=mysqli_query($link,$UserQuery);
-           $row=mysqli_fetch_array($UserResult);
-          $UserName=$row['FirstName'];
-          $UserLastName=$row['LastName'];
+           $row = mysqli_fetch_array($UserResult);
+$UserName = $row['FirstName'];
+$UserLastName=$row['LastName'];
           $UserEmail=$row['EmailId'];
           $UserMobile=$row['Mobile']
           
@@ -58,7 +58,7 @@ include 'AdminSql.php';
                                    
                     <ul class="nav navbar-nav">
 
-                       <li class="active"><a href="AdminLogin.php"> DashBoard</a></li>
+                       <li class="active"><a href="AdminLoginJS.php"> DashBoard</a></li>
 
                         <li><a href="AdminUser.php">Users</a></li>
 

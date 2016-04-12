@@ -16,18 +16,17 @@
     <?php
     include 'Login.php';
     include 'AdminSql.php';
-    
-       
- $UserQuery="SELECT * FROM UserData WHERE Id='".$_GET['Id']."' LIMIT 1";
-           $UserResult=mysqli_query($link,$UserQuery);
-           $row=mysqli_fetch_array($UserResult);
-          $UserEmail=$row['EmailId'];
-    
+
+
+    $UserQuery = "SELECT EmailId FROM UserData WHERE Id='" . $_GET['Id'] . "' LIMIT 1";
+    $UserResult = mysqli_query($link, $UserQuery);
+    $row = mysqli_fetch_array($UserResult);
+    $UserEmail = $row['EmailId'];
     ?>
     <body>
 
 
- <div class="nav navbar-default">
+        <div class="nav navbar-default">
 
             <div class="container">
 
@@ -50,10 +49,10 @@
                 </div>
 
                 <div class="collapse navbar-collapse">
-                                   
+
                     <ul class="nav navbar-nav">
 
-                       <li class="active"><a href="AdminLogin.php"> DashBoard</a></li>
+                        <li class="active"><a href="AdminLoginJS.php"> DashBoard</a></li>
 
                         <li><a href="AdminUser.php">Users</a></li>
 
@@ -62,32 +61,27 @@
                     </ul>
                     <div class="navbar-form navbar-right">
                         <div class="sign">
-                        <img src="images/sign.jpeg" />
+                            <img src="images/sign.jpeg" />
                             <?php
-                      echo $AdminName;
-                       ?>
-               </div>
+                            echo $AdminName;
+                            ?>
+                        </div>
                     </div>
-                 
+
                 </div>
-                
+
             </div>
 
         </div>
-      <div class="container UserContainer">
-           <?php
-                    if($error)
-                    {
-                        echo '<div class="alert alert-danger">'.addslashes($error).'</div>';
-                    }
-                    if($msg)
-                    {
-                        echo '<div class="alert alert-success">'.addslashes($msg).'</div>';
-                    }
-                    
-                    
-                    
-                    ?>
+        <div class="container UserContainer">
+            <?php
+            if ($error) {
+                echo '<div class="alert alert-danger">' . addslashes($error) . '</div>';
+            }
+            if ($msg) {
+                echo '<div class="alert alert-success">' . addslashes($msg) . '</div>';
+            }
+            ?>
             <h3 >Delete Profile</h3>
             <div class="container childContainer col-md-6 col-offset-3"> 
                 <form class="form-group"  id="DeleteProfile" method="post" enctype="multipart/form-data" > 
@@ -96,7 +90,7 @@
                         <label for=EmailId>Email Id</label>
                         <input type="email" id="EmailId" name="EmailId" placeholder="emailId" class="form-control " readonly value="<?php echo $UserEmail; ?>" />
                     </div>
-                   
+
                     <div class="col-md-6 col-offset-3 marginTop">
                         <input type="submit" class="btn btn-success btn-lg" value="Delete-Profile" name="Delete-Profile" id="Delete-Profile"/></div>
 
@@ -107,6 +101,6 @@
     <script src="js/bootstrap.min.js"></script>
     <script>
 
-                            $(".UserContainer").css("min-height", $(window).height() - 50);
+        $(".UserContainer").css("min-height", $(window).height() - 50);
     </script>
 </html>

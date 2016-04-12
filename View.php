@@ -12,7 +12,7 @@
         <script src="js/jquery-2.2.2.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/validation.js"></script>
-        
+
     </head>
 
 
@@ -20,10 +20,11 @@
     include 'Login.php';
     include 'AdminSql.php';
     session_start();
-    $id=$_SESSION['id'];
-    if(!$id){
+    $id = $_SESSION['id'];
+    if (!$id) {
         header("Location:index.php");
     }
+
     ?>
 
     <body data-type="scroll" >
@@ -58,7 +59,7 @@
 
                     <ul class="nav navbar-nav">
 
-                        <li class="active"><a href="AdminLogin.php"> DashBoard</a></li>
+                        <li class="active"><a href="AdminLoginJS.php"> DashBoard</a></li>
 
                         <li><a href="AdminUser.php">Users</a></li>
 
@@ -133,14 +134,14 @@
                             </tbody>
                         </table>
                     </div>
-                   
+
                     <input type="button" class="btn btn-success" id="Edit" value="Edit"/>
-                     <input type="button" class="btn btn-success" id="Delete" value="Delete"/>
-                    <a href="Map.php">Click here To View Location</a>
+                    <input type="button" class="btn btn-success" id="Delete" value="Delete"/>
+                    <a href="Map.php?Id=<?php echo $id; ?>">Click here To View Location</a>
                     <a href="#" class="read" data-toggle="modal" data-target="#myModal" >Click Here to view location</a>
 
                 </form> 
-               
+
             </div>
 
         </div>
@@ -156,7 +157,7 @@
                     </div>
                     <div class="modal-body">
                         <?php
-                        include 'Map.php';
+                            include 'Map.php';
                         ?>
 
                     </div>
@@ -175,25 +176,25 @@
 
 
     <script>
-        
+
 
         $(".UserContainer").css("min-height", $(window).height() - 100);
-       
-            $(document).ready(function(){
-                $("#Edit").click(function(){
-                   
-                   window.location.href="Edit.php?Id=<?php echo $id; ?>"; 
-                });
-               
+
+        $(document).ready(function () {
+            $("#Edit").click(function () {
+
+                window.location.href = "Edit.php?Id=<?php echo $id; ?>";
             });
-             $(document).ready(function(){
-                $("#Delete").click(function(){
-                   
-                   window.location.href="Delete.php?Id=<?php echo $id; ?>"; 
-                });
-               
+
+        });
+        $(document).ready(function () {
+            $("#Delete").click(function () {
+
+                window.location.href = "Delete.php?Id=<?php echo $id; ?>";
             });
-      
+
+        });
+
     </script>
 
 </html>

@@ -1,12 +1,10 @@
 <?php
-    include 'Login.php';
-    include 'AdminSql.php';
-    $sql = "SELECT Id,FirstName,LastName,EmailId FROM UserData";
-        $result = mysqli_query($link, $sql);
-
-        $Row = mysqli_fetch_all($result);
-     
-    ?>
+include 'Login.php';
+include 'AdminSql.php';
+$sql = "SELECT Id,FirstName,LastName,EmailId FROM UserData";
+$result = mysqli_query($link, $sql);
+$Row = mysqli_fetch_all($result);
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -23,13 +21,13 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="js/validation.js"></script>
         <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
- 
+
         <script>
             var Data =<?php echo json_encode($Row); ?>;
-            
-               $(document).ready(function(){
-                   
-                      
+
+            $(document).ready(function () {
+
+
                 $('#example').DataTable({
                     data: Data,
                     columns: [
@@ -38,29 +36,29 @@
                         {title: "Lastname"},
                         {title: "EmailId"}
                     ]
-             
-        });
-        
-       
-    var table = $('#example').DataTable();
-     
-    $('#example tbody').on('click', 'tr', function () {
-        var data = table.row( this ).data();
-      
-        window.location.href="View.php?Id="+data[0];
-        
-        
-    } );
-} );
 
- 
+                });
+
+
+                var table = $('#example').DataTable();
+
+                $('#example tbody').on('click', 'tr', function () {
+                    var data = table.row(this).data();
+
+                    window.location.href = "View.php?Id=" + data[0];
+
+
+                });
+            });
+
+
         </script>
-      
-          
+
+
     </head>
 
 
-    
+
 
     <body data-type="scroll" >
         <div class="nav navbar-default">
