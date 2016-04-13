@@ -15,9 +15,15 @@
 
         <?php
         include 'connection.php';
-        include 'Login.php';
-        $UserQuery = "SELECT FirstName FROM UserData WHERE id='" . $_SESSION['id'] . "' LIMIT 1";
-        $UserResult = mysqli_query($link, $UserQuery);
+        //include 'Login.php';
+        session_start();
+      
+    $Id = $_SESSION['id'];
+    if (!$Id) {
+        header("Location:index.php");
+    }
+        $UserQuery = "SELECT FirstName FROM UserData WHERE Id='" . $_SESSION['id'] . "' LIMIT 1";
+        $UserResult = mysqli_query($Link, $UserQuery);
         $Row = mysqli_fetch_array($UserResult);
         $UserName = $Row['FirstName'];
         ?>

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Login-Success</title>
+        <title>USER VIEW PROFILE</title>
 
 
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -17,8 +17,13 @@
 
     </head>
     <?php
-    include 'Login.php';
+    //include 'Login.php';
     include 'UpdateUser.php';
+     session_start();
+    $Id = $_SESSION['id'];
+    if (!$Id) {
+        header("Location:index.php");
+    }
     
     ?>
     <body>
@@ -142,13 +147,13 @@
                     <label for="ZipCode">ZipCode</label>
                     <input type="text" id="ZipCode" name="ZipCode" class="form-control" readonly value="<?php echo $UserZipCode ?>" />
                   
-                    <a href="#" class="read" data-toggle="modal" data-target="#myModal" >Click Here to view location</a>
+                    <a href="#" class="read" data-toggle="modal" data-target="#MapModal" >Click Here to view location</a>
                 </div>
 
             </form></div>
     </div>
 
-    <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal fade" id="MapModal" role="dialog">
         <div class="modal-dialog">
 
             <!-- Modal content-->

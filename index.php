@@ -68,11 +68,11 @@
         </div>
         <div class="container parentContainer">
             <?php
-            if ($error) {
-                echo '<div class="alert alert-danger">' . addslashes($error) . '</div>';
+            if ($Error) {
+                echo '<div class="alert alert-danger">' . addslashes($Error) . '</div>';
             }
-            if ($msg) {
-                echo '<div class="alert alert-success">' . addslashes($msg) . '</div>';
+            if ($Message) {
+                echo '<div class="alert alert-success">' . addslashes($Message) . '</div>';
             }
             ?>
             <h2>REGISTRATION FORM</h2>
@@ -150,7 +150,7 @@
 
                             <div class="form-group">
                                 <label for="ForgotEmail">Email ID</label>
-                                <input type="email" name="ForgotEmail" id="ForgotEmail"/>
+                                <input type="email" name="ForgotEmail" id="ForgotEmail" placeholde="ForgotEmail"/>
                                 <input type="submit" name="ForgotSubmit" id="ForgotSubmit" />
                             </div></form>
                     </div>

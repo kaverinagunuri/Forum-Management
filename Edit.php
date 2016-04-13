@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Login-Success</title>
+        <title>User-Edit</title>
 
 
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -14,16 +14,22 @@
         <script src="js/validation.js"></script>
     </head>
     <?php
-    include 'Login.php';
+    //include 'Login.php';
     include 'AdminSql.php';
+    include 'AdminSql.php';
+    session_start();
+    $Id = $_SESSION['id'];
+    if (!$Id) {
+        header("Location:index.php");
+    }
 
     $UserQuery = "SELECT * FROM UserData WHERE Id='" . $_GET['Id'] . "' LIMIT 1";
-    $UserResult = mysqli_query($link, $UserQuery);
-    $row = mysqli_fetch_array($UserResult);
-    $UserName = $row['FirstName'];
-    $UserLastName = $row['LastName'];
-    $UserEmail = $row['EmailId'];
-    $UserMobile = $row['Mobile']
+    $UserResult = mysqli_query($Link, $UserQuery);
+    $Row = mysqli_fetch_array($UserResult);
+    $UserName = $Row['FirstName'];
+    $UserLastName = $Row['LastName'];
+    $UserEmail = $Row['EmailId'];
+    $UserMobile = $Row['Mobile']
     ?>
 
 
@@ -57,7 +63,7 @@
 
                     <li class="active"><a href="AdminLoginJS.php"> DashBoard</a></li>
 
-                    <li><a href="AdminUser.php">Users</a></li>
+                    <li><a href="AdminUser.php"><span class="glyphicon glyphicon-user">Add Users</span></a></li>
 
                     <li><a href="index.php?logout=1">Logout</a></li>
 
@@ -78,11 +84,11 @@ echo $AdminName;
     </div>
     <div class="container UserContainer">
 <?php
-if ($error) {
-    echo '<div class="alert alert-danger">' . addslashes($error) . '</div>';
+if ($Error) {
+    echo '<div class="alert alert-danger">' . addslashes($Error) . '</div>';
 }
-if ($msg) {
-    echo '<div class="alert alert-success">' . addslashes($msg) . '</div>';
+if ($Message) {
+    echo '<div class="alert alert-success">' . addslashes($Message) . '</div>';
 }
 ?>
         <h3 >Update Profile</h3>

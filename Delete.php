@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Login-Success</title>
+        <title>User-Delete</title>
 
 
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -14,12 +14,18 @@
         <script src="js/validation.js"></script>
     </head>
     <?php
-    include 'Login.php';
+    //include 'Login.php';
+  
     include 'AdminSql.php';
+    session_start();
+    $id = $_SESSION['id'];
+    if (!$id) {
+        header("Location:index.php");
+    }
 
 
     $UserQuery = "SELECT EmailId FROM UserData WHERE Id='" . $_GET['Id'] . "' LIMIT 1";
-    $UserResult = mysqli_query($link, $UserQuery);
+    $UserResult = mysqli_query($Link, $UserQuery);
     $row = mysqli_fetch_array($UserResult);
     $UserEmail = $row['EmailId'];
     ?>
@@ -54,7 +60,7 @@
 
                         <li class="active"><a href="AdminLoginJS.php"> DashBoard</a></li>
 
-                        <li><a href="AdminUser.php">Users</a></li>
+                        <li><a href="AdminUser.php"><span class="glyphicon glyphicon-user">Add Users</span></a></li>
 
                         <li><a href="index.php?logout=1">Logout</a></li>
 
@@ -75,11 +81,11 @@
         </div>
         <div class="container UserContainer">
             <?php
-            if ($error) {
-                echo '<div class="alert alert-danger">' . addslashes($error) . '</div>';
+            if ($Error) {
+                echo '<div class="alert alert-danger">' . addslashes($Error) . '</div>';
             }
-            if ($msg) {
-                echo '<div class="alert alert-success">' . addslashes($msg) . '</div>';
+            if ($Message) {
+                echo '<div class="alert alert-success">' . addslashes($Message) . '</div>';
             }
             ?>
             <h3 >Delete Profile</h3>

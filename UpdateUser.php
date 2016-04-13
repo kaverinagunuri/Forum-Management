@@ -2,8 +2,9 @@
 
 error_reporting(0);
 include("connection.php");
-$UserQuery = "SELECT * FROM UserData WHERE id='" . $_SESSION['id'] . "' LIMIT 1";
-$UserResult = mysqli_query($link, $UserQuery);
+session_start();
+$UserQuery = "SELECT * FROM UserData WHERE Id='" . $_SESSION['id'] . "' LIMIT 1";
+$UserResult = mysqli_query($Link, $UserQuery);
 $Row = mysqli_fetch_array($UserResult);
 $UserName = $Row['FirstName'];
 $UserLastName = $Row['LastName'];
@@ -23,37 +24,37 @@ $UserZipCode = $Row['ZipCode'];
 
 if (isset($_POST['Update']) == "Update") {
 
-    $error = "";
+    $Error = "";
 
     if (!$_POST['AddressOne']) {
-        $error.="please enter the AddressOne<br/>";
+        $Error.="please enter the AddressOne<br/>";
     }
     if (!$_POST['AddressTwo']) {
-        $error.="please enter the AddressTwo<br/>";
+        $Error.="please enter the AddressTwo<br/>";
     }
     if (!$_POST['City']) {
-        $error.="please enter the City<br/>";
+        $Error.="please enter the City<br/>";
     }
     if (!$_POST['State']) {
-        $error.="please enter the State<br/>";
+        $Error.="please enter the State<br/>";
     }
     if (!$_POST['Country']) {
-        $error.="please enter the Country<br/>";
+        $Error.="please enter the Country<br/>";
     }
     if (!$_POST['ZipCode']) {
-        $error.="please enter the ZipCode<br/>";
+        $Error.="please enter the ZipCode<br/>";
     }
 
-    if ($error)
-        $error = "there were errors in your Update details<br/>" . $error;
+    if ($Error)
+        $Error = "there were errors in your Update details<br/>" . $Error;
     else {
 
         $UserQuery = 'UPDATE UserData SET AddressOne="' . ($_POST['AddressOne']) . '",AddressTwo="' . ($_POST['AddressTwo']) . '",City="' . ($_POST['City']) . '",State="' . ($_POST['State']) . '",Country="' . ($_POST['Country']) . '",ZipCode="' . ($_POST['ZipCode']) . '" WHERE Id="' . $_SESSION['id'] . '" LIMIT 1';
 
-        if ($UserResult = mysqli_query($link, $UserQuery))
-            $msg.="your Profile were successfully Updated!";
-        $row = mysqli_fetch_array($UserResult);
-        print_r($row);
+        if ($UserResult = mysqli_query($Link, $UserQuery))
+            $Message.="your Profile were successfully Updated!";
+        $Row = mysqli_fetch_array($UserResult);
+        print_r($Row);
     }
 }
 if (isset($_POST['ChangePassword']) == "ChangePassword") {
@@ -61,34 +62,34 @@ if (isset($_POST['ChangePassword']) == "ChangePassword") {
    
     $NewPassword = $_POST['Password'];
     if (!$_POST['Password'])
-        $error.="please enter the Password <br/>";
+        $Error.="please enter the Password <br/>";
 
     if (!$_POST['ConfirmPassword'])
-        $error.="please enter the ConfirmPassword <br/>";
+        $Error.="please enter the ConfirmPassword <br/>";
     else if ($_POST['Password'] != $_POST['ConfirmPassword'])
-        $error.="please enter the ConfirmPassword same as Password <br/>";
+        $Error.="please enter the ConfirmPassword same as Password <br/>";
     else {
         if (strlen($_POST['Password']) < 8)
-            $error.="the length of pssword must be atleast 8 characters<br/>";
+            $Error.="the length of pssword must be atleast 8 characters<br/>";
         if (!preg_match('`[A-Z]`', $_POST['Password']))
-            $error.="password should contain atleast one Captial Letter <br/>";
+            $Error.="password should contain atleast one Captial Letter <br/>";
     }
 
-    if ($error)
-        $error = "there were errors in your signup details<br/>" . $error;
+    if ($Error)
+        $Error = "there were errors in your signup details<br/>" . $Error;
     else {
 
         $Query = "SELECT * FROM UserData WHERE Password='" . ($_POST['OldPassword']) . "'";
-        $Result = mysqli_query($link, $Query);
+        $Result = mysqli_query($Link, $Query);
         $Rows = mysqli_num_rows($Result);
 
         if ($Rows) {
             $SetPasswordQuery = "UPDATE UserData SET Password='" . ($_POST['Password']) . "'WHERE id='" . $_SESSION['id'] . "' LIMIT 1 ";
-            $SetPasswordResult = mysqli_query($link, $SetPasswordQuery);
+            $SetPasswordResult = mysqli_query($Link, $SetPasswordQuery);
             $SetPasswordRow = mysqli_fetch_array($SetPasswordResult);
-            $msg.="updated";
+            $Message.="updated";
         } else {
-            $error = "error in Upating pasword?";
+            $Error = "error in Upating pasword?";
         }
     }
 }

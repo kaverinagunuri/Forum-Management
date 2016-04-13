@@ -3,7 +3,7 @@ include 'Login.php';
 include 'UpdateUser.php';
 
 $UserQuery = "SELECT AddressOne,AddressTwo, City FROM UserData WHERE Id='" . $_SESSION['id'] . "' LIMIT 1";
-$UserResult = mysqli_query($link, $UserQuery);
+$UserResult = mysqli_query($Link, $UserQuery);
 $address = mysqli_fetch_array($UserResult);
 
 
@@ -55,7 +55,7 @@ echo $Variable;
                         map.setZoom(9);
                         map.setCenter(marker.getPosition());
                     });
-                    $("#myModal").on("shown.bs.modal", function () {
+                    $("#MapModal").on("shown.bs.modal", function () {
                     google.maps.event.trigger(googleMap, "resize");
                     return map.setCenter(myCenter);
                 });
@@ -71,7 +71,7 @@ echo $Variable;
     </head>
 
     <body>
-        <div id="googleMap" style="width:500px;height:380px;"></div>
+        <div id="googleMap" style="height:380px;"></div>
     </body>
 
 

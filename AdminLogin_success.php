@@ -14,8 +14,14 @@
         <script src="js/validation.js"></script>
 
         <?php
-        include 'Login.php';
+        //include 'Login.php';
         include 'AdminSql.php';
+        
+    session_start();
+    $Id = $_SESSION['id'];
+    if (!$Id) {
+        header("Location:index.php");
+    }
         ?>
     </head>
     <body>
@@ -24,6 +30,7 @@
             <div class="col-md-6 marginTop successContainer center ">
                 <h2>Welcome 
 <?php
+
 if (isset($AdminName)) {
     echo $AdminName;
 }

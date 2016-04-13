@@ -1,11 +1,9 @@
 <?php
 include 'Login.php';
-//include 'UpdateUser.php';
+
 $UserQuery = "SELECT AddressOne,AddressTwo, City FROM UserData WHERE Id='" . $_GET['Id'] . "' LIMIT 1";
-$UserResult = mysqli_query($link, $UserQuery);
+$UserResult = mysqli_query($Link, $UserQuery);
 $address = mysqli_fetch_array($UserResult);
-
-
 $Variable = $address['1'] . " " . $address['2'];
 echo $Variable;
 ?>
@@ -23,23 +21,14 @@ echo $Variable;
 
             var geocoder = new google.maps.Geocoder();
             var address = "<?php echo $Variable; ?>";
-
-
-            geocoder.geocode({'address': address}, function (results, status) {
-
-
-                if (status == google.maps.GeocoderStatus.OK) {
+             geocoder.geocode({'address': address}, function (results, status) {
+             if (status == google.maps.GeocoderStatus.OK) {
                     var latitude = results[0].geometry.location.lat();
                     var longitude = results[0].geometry.location.lng();
 
                 }
-
-
-
-                var myCenter = new google.maps.LatLng(latitude, longitude);
-
-
-                function initialize()
+               var myCenter = new google.maps.LatLng(latitude, longitude);
+              function initialize()
                 {
                     var mapProp = {
                         center: myCenter,
@@ -61,14 +50,14 @@ echo $Variable;
                         map.setZoom(9);
                         map.setCenter(marker.getPosition());
                     });
-                     
-                $("#myModal").on("shown.bs.modal", function () {
-                    google.maps.event.trigger(googleMap, "resize");
-                    return map.setCenter(myCenter);
-                });
+
+                    $("#MapModal").on("shown.bs.modal", function () {
+                        google.maps.event.trigger(googleMap, "resize");
+                        return map.setCenter(myCenter);
+                    });
                 }
                 google.maps.event.addDomListener(window, 'load', initialize);
-               
+
 
             });
 
@@ -76,7 +65,7 @@ echo $Variable;
     </head>
 
     <body>
-        <div id="googleMap" style="width:500px;height:380px;"></div>
+        <div id="googleMap" style="height:380px;"></div>
     </body>
 
 

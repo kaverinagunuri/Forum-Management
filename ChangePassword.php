@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Login-Success</title>
+        <title>Change-Password</title>
 
 
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -14,8 +14,13 @@
         <script src="js/validation.js"></script>
     </head>
     <?php
-    include 'Login.php';
+    //include 'Login.php';
     include 'UpdateUser.php';
+     session_start();
+    $Id = $_SESSION['id'];
+    if (!$Id) {
+        header("Location:index.php");
+    }
     ?>
     <body>
 
@@ -76,11 +81,11 @@
     </div>
     <div class="container UserContainer">
         <?php
-        if ($error) {
-            echo '<div class="alert alert-danger">' . addslashes($error) . '</div>';
+        if ($Error) {
+            echo '<div class="alert alert-danger">' . addslashes($Error) . '</div>';
         }
-        if ($msg) {
-            echo '<div class="alert alert-success">' . addslashes($msg) . '</div>';
+        if ($Message) {
+            echo '<div class="alert alert-success">' . addslashes($Message) . '</div>';
         }
         ?>
         <h3 >Update Profile</h3>
@@ -94,13 +99,13 @@
                 <div class="col-md-12 col-offset-3 marginTop">
 
                     <label for="Password">Old Password</label>
-                    <input type="password" id="OldPassword" name="OldPassword" placeholder="password" class="form-control"  required oninvalid="setCustomValidity('Plz enter on  Password ')"  oninput="setCustomValidity('')" />
+                    <input type="password" id="OldPassword" name="OldPassword" placeholder="Old password" class="form-control"  required oninvalid="setCustomValidity('Plz enter on  Password ')"  oninput="setCustomValidity('')" />
                 </div>
 
                 <div class="col-md-12 col-offset-3 marginTop">
 
                     <label for="Password">New Password</label>
-                    <input type="password" id="Password" name="Password" placeholder="password" class="form-control"  required oninvalid="setCustomValidity('Plz enter on  Password ')"  oninput="setCustomValidity('')" onblur="ValidatePassword()" />
+                    <input type="password" id="Password" name="Password" placeholder="New password" class="form-control"  required oninvalid="setCustomValidity('Plz enter on  Password ')"  oninput="setCustomValidity('')" onblur="ValidatePassword()" />
 
                     <span id="Password_error"></span>
 
@@ -109,7 +114,7 @@
                 <div class="col-md-12 col-offset-3 marginTop">
 
                     <label for="ConfirmPassword">Confirm Password</label>
-                    <input type="password" id="ConfirmPassword" name="ConfirmPassword" placeholder="confirmPassword" class="form-control"  required oninvalid="setCustomValidity('Plz enter on Confirm Password ')"  oninput="setCustomValidity('')" onblur="ValidateConfirmPassword()" />
+                    <input type="password" id="ConfirmPassword" name="ConfirmPassword" placeholder="confirm Password" class="form-control"  required oninvalid="setCustomValidity('Plz enter on Confirm Password ')"  oninput="setCustomValidity('')" onblur="ValidateConfirmPassword()" />
                     <span id="ConfirmPassword_error"></span>
 
 

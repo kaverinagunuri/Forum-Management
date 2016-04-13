@@ -1,5 +1,5 @@
 
 <?php
 
-$link = mysqli_connect("localhost", "dbuser", "123", "kaveri");
+$Link = mysqli_connect("localhost", "dbuser", "123", "kaveri");
 ?>

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Login-Success</title>
+        <title>User Profile</title>
 
 
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -14,8 +14,13 @@
         <script src="js/validation.js"></script>
     </head>
     <?php
-    include 'Login.php';
+    //include 'Login.php';
     include 'UpdateUser.php';
+     session_start();
+    $Id = $_SESSION['id'];
+    if (!$Id) {
+        header("Location:index.php");
+    }
     ?>
 
 
@@ -73,11 +78,11 @@
 </div>
 <div class="container UserContainer">
     <?php
-    if ($error) {
-        echo '<div class="alert alert-danger">' . addslashes($error) . '</div>';
+    if ($Error) {
+        echo '<div class="alert alert-danger">' . addslashes($Error) . '</div>';
     }
-    if ($msg) {
-        echo '<div class="alert alert-success">' . addslashes($msg) . '</div>';
+    if ($Message) {
+        echo '<div class="alert alert-success">' . addslashes($Message) . '</div>';
     }
     ?>
     <h3 >Update Profile</h3>
@@ -112,36 +117,36 @@
             <div class="col-md-6 col-offset-3 marginTop">
                 <span class="form-group-addon glyphicon glyphicon-map "></span>
                 <label for="AddressOne">Address Line 1</label>
-                <textarea id="AddressOne" name="AddressOne" maxlength="500  " required oninvalid="setCustomValidity('Plz enter on valid Address 1 Mandaitory')"  oninput="setCustomValidity('')"></textarea>
+                <textarea id="AddressOne" name="AddressOne" maxlength="500  " placeholder="AddressOne" required oninvalid="setCustomValidity('Plz enter on valid Address 1 Mandaitory')"  oninput="setCustomValidity('')"></textarea>
             </div>
 
             <div class="col-md-6 col-offset-3 marginTop">
                 <span class="form-group-addon glyphicon glyphicon-map "></span>
                 <label for="AddressTwo">Address Line 2</label>
-                <textarea id="AddressTwo" name="AddressTwo" maxlength="500" required oninvalid="setCustomValidity('Plz enter on valid Address2 Mandaitory')"  oninput="setCustomValidity('')"></textarea>
+                <textarea id="AddressTwo" name="AddressTwo" maxlength="500" placeholder="AddressTwo" required oninvalid="setCustomValidity('Plz enter on valid Address2 Mandaitory')"  oninput="setCustomValidity('')"></textarea>
             </div>
             <div class="col-md-6 col-offset-3 marginTop">
                 <span class="form-group-addon glyphicon glyphicon-map "></span>
                 <label for="City">City</label>
-                <input type="text" id="City" name="City" class="form-control" pattern="[a-zA-Z ]+" required oninvalid="setCustomValidity('Plz enter on City')" oninput="setCustomValidity('')" title="City Name Should be Mandaitory" />
+                <input type="text" id="City" name="City" placeholder="City" class="form-control" pattern="[a-zA-Z ]+" required oninvalid="setCustomValidity('Plz enter on City')" oninput="setCustomValidity('')" title="City Name Should be Mandaitory" /> 
 
             </div>
             <div class="col-md-6 col-offset-3 marginTop">
                 <span class="form-group-addon glyphicon glyphicon-map "></span>
                 <label for="State">State</label>
-                <input type="text" id="State" name="State" class="form-control" pattern="[a-zA-Z ]+" required oninvalid="setCustomValidity('Plz enter on State')" oninput="setCustomValidity('')" title="State Name Should be Mandaitory" />
+                <input type="text" id="State" name="State" placeholder="State" class="form-control" pattern="[a-zA-Z ]+" required oninvalid="setCustomValidity('Plz enter on State')" oninput="setCustomValidity('')" title="State Name Should be Mandaitory" />
 
             </div>
             <div class="col-md-6 col-offset-3 marginTop">
                 <span class="form-group-addon glyphicon glyphicon-map "></span>
                 <label for="Country">Country</label>
-                <input type="text" id="Country" name="Country" class="form-control" pattern="[a-zA-Z ]+" required oninvalid="setCustomValidity('Plz enter on Country')" oninput="setCustomValidity('')" title="Country Name Should be Mandaitory" />
+                <input type="text" id="Country" placeholder="Country" name="Country" class="form-control" pattern="[a-zA-Z ]+" required oninvalid="setCustomValidity('Plz enter on Country')" oninput="setCustomValidity('')" title="Country Name Should be Mandaitory" />
 
-            </div>
+             </div>
             <div class="col-md-6 col-offset-3 marginTop">
                 <span class="form-group-addon glyphicon glyphicon-map "></span>
                 <label for="ZipCode">ZipCode</label>
-                <input type="text" id="ZipCode" name="ZipCode" class="form-control" pattern="[0-9]{6}" required oninvalid="setCustomValidity('Plz enter on ZipCode')" oninput="setCustomValidity('')" title="ZipCode Should be 6 digits valid postal code " />
+                <input type="text" id="ZipCode" name="ZipCode" placeholder="ZipCode" class="form-control" pattern="[0-9]{6}" required oninvalid="setCustomValidity('Plz enter on ZipCode')" oninput="setCustomValidity('')" title="ZipCode Should be 6 digits valid postal code " />
 
             </div>
             <div class="col-md-6 col-offset-3 marginTop">

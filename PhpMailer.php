@@ -29,11 +29,11 @@ $mail->Password = "K@veri2710";            // GMAIL password
 
 $mail->SetFrom('kaveri.nagunuri@karmanya.co.in', 'kaveri');
 $mail->AddReplyTo("kaveri.nagunuri@karmanya.co.in", "kaveri");
-$mail->Subject = "PHPMailer Test Subject via smtp (Gmail), basic";
+$mail->Subject = "Registration Completed";
 $mail->AltBody = "To view the message, please use an HTML compatible email viewer!"; // optional, comment out and test
 $mail->MsgHTML($body);
 
-$address = mysqli_real_escape_string($link, $_POST['EmailId']);
+$address = mysqli_real_escape_string($Link, $_POST['EmailId']);
 $mail->AddAddress($address, "Success");
 //$mail->AddAttachment("images/phpmailer.gif");      // attachment
 //$mail->AddAttachment("images/phpmailer_mini.gif"); // attachment

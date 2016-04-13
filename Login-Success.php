@@ -17,13 +17,13 @@
  include 'connection.php';
  include 'login.php';
   $UserQuery="SELECT FirstName FROM UserData WHERE id='".$_SESSION['id']."' LIMIT 1";
-           $UserResult=mysqli_query($link,$UserQuery);
+           $UserResult=mysqli_query($Link,$UserQuery);
            $row=mysqli_fetch_array($UserResult);
           $UserName=$row['FirstName'];
           
        
           $AdminQuery="SELECT AdminName FROM Admin WHERE id='".$_SESSION['id']."' LIMIT 1";
-           $result=mysqli_query($link,$AdminQuery);
+           $result=mysqli_query($Link,$AdminQuery);
            $row=mysqli_fetch_array($result);
           $AdminName=$row['Admin'];
          

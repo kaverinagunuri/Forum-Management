@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Login-Success</title>
+        <title>View User Profile</title>
 
 
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -17,11 +17,11 @@
 
 
     <?php
-    include 'Login.php';
+    //include 'Login.php';
     include 'AdminSql.php';
     session_start();
-    $id = $_SESSION['id'];
-    if (!$id) {
+    $Id = $_SESSION['id'];
+    if (!$Id) {
         header("Location:index.php");
     }
 
@@ -61,7 +61,7 @@
 
                         <li class="active"><a href="AdminLoginJS.php"> DashBoard</a></li>
 
-                        <li><a href="AdminUser.php">Users</a></li>
+                        <li><a href="AdminUser.php"><span class="glyphicon glyphicon-user">Add Users</span></a></li>
 
                         <li><a href="index.php?logout=1">Logout</a></li>
 
@@ -86,8 +86,8 @@
 
                     <?php
                     $UserQuery = "SELECT * FROM UserData WHERE Id='" . $_GET['Id'] . "' LIMIT 1";
-                    $UserResult = mysqli_query($link, $UserQuery);
-                    $id = $_GET['Id'];
+                    $UserResult = mysqli_query($Link, $UserQuery);
+                    $GetId = $_GET['Id'];
                     ?>
 
                     <div class="table-responsive">          
@@ -138,7 +138,7 @@
                     <input type="button" class="btn btn-success" id="Edit" value="Edit"/>
                     <input type="button" class="btn btn-success" id="Delete" value="Delete"/>
                    
-                    <a href="#" class="read" data-toggle="modal" data-target="#myModal" >Click Here to view location</a>
+                    <a href="#" class="read" data-toggle="modal" data-target="#MapModal" >Click Here to view location</a>
 
                 </form> 
 
@@ -146,7 +146,7 @@
 
         </div>
 
-        <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal fade" id="MapModal" role="dialog">
             <div class="modal-dialog">
 
                 <!-- Modal content-->
@@ -183,14 +183,14 @@
         $(document).ready(function () {
             $("#Edit").click(function () {
 
-                window.location.href = "Edit.php?Id=<?php echo $id; ?>";
+                window.location.href = "Edit.php?Id=<?php echo $GetId; ?>";
             });
 
         });
         $(document).ready(function () {
             $("#Delete").click(function () {
 
-                window.location.href = "Delete.php?Id=<?php echo $id; ?>";
+                window.location.href = "Delete.php?Id=<?php echo $GetId; ?>";
             });
 
         });
