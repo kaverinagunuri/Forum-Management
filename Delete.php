@@ -15,7 +15,7 @@
     </head>
     <?php
     //include 'Login.php';
-  
+
     include 'AdminSql.php';
     session_start();
     $id = $_SESSION['id'];

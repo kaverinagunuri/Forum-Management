@@ -71,9 +71,9 @@
                 <div class="navbar-form navbar-right">
                     <div class="sign">
                         <img src="images/sign.jpeg" />
-<?php
-echo $AdminName;
-?>
+                        <?php
+                        echo $AdminName;
+                        ?>
                     </div>
                 </div>
 
@@ -83,14 +83,14 @@ echo $AdminName;
 
     </div>
     <div class="container UserContainer">
-<?php
-if ($Error) {
-    echo '<div class="alert alert-danger">' . addslashes($Error) . '</div>';
-}
-if ($Message) {
-    echo '<div class="alert alert-success">' . addslashes($Message) . '</div>';
-}
-?>
+        <?php
+        if ($Error) {
+            echo '<div class="alert alert-danger">' . addslashes($Error) . '</div>';
+        }
+        if ($Message) {
+            echo '<div class="alert alert-success">' . addslashes($Message) . '</div>';
+        }
+        ?>
         <h3 >Update Profile</h3>
         <div class="container childContainer col-md-10"> 
 

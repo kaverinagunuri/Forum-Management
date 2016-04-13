@@ -11,18 +11,18 @@ if (isset($_POST['ForgotSubmit'])) {
     if ($Row) {
 
         require_once('PHPMailer-master/class.phpmailer.php');
-        include("PHPMailer-master/class.smtp.php"); 
+        include("PHPMailer-master/class.smtp.php");
         $Mail = new PHPMailer();
-       $Body = "The Password of " . $ForgotEmail . "is" . $RetrivePassword;
-        $Mail->IsSMTP(); 
-        $Mail->Host = "mail.gmail.com"; 
-        $Mail->SMTPDebug = 0;                    
-        $Mail->SMTPAuth = true; 
-        $Mail->SMTPSecure = "tls"; 
+        $Body = "The Password of " . $ForgotEmail . "is" . $RetrivePassword;
+        $Mail->IsSMTP();
+        $Mail->Host = "mail.gmail.com";
+        $Mail->SMTPDebug = 0;
+        $Mail->SMTPAuth = true;
+        $Mail->SMTPSecure = "tls";
         $Mail->Host = "smtp.gmail.com";
-        $Mailail->Port = 587; 
-        $Mail->Username = "kaveri.nagunuri@karmanya.co.in"; 
-        $Mail->Password = "K@veri2710"; 
+        $Mailail->Port = 587;
+        $Mail->Username = "kaveri.nagunuri@karmanya.co.in";
+        $Mail->Password = "K@veri2710";
         $Mail->SetFrom('kaveri.nagunuri@karmanya.co.in', 'kaveri');
         $Mail->AddReplyTo('kaveri.nagunuri@karmanya.co.in', 'kaveri');
         $Mail->Subject = "Password For Forum-Management Website";
@@ -37,8 +37,7 @@ if (isset($_POST['ForgotSubmit'])) {
 
             $Message.="The password is sent to ur emailID";
         }
-    }
-    else{
+    } else {
         $Error.="Email is not registred under user";
     }
 }

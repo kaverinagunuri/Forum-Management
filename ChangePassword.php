@@ -16,7 +16,7 @@
     <?php
     //include 'Login.php';
     include 'UpdateUser.php';
-     session_start();
+    session_start();
     $Id = $_SESSION['id'];
     if (!$Id) {
         header("Location:index.php");
@@ -54,7 +54,7 @@
 
                         <li><a href="UserLogin.php"> DashBoard</a></li>
 
-                         
+
 
                         <li><a href="UserProfile.php"><span class="glyphicon glyphicon-user">My Profile</span></a></li>
 

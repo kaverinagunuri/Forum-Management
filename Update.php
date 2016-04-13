@@ -3,25 +3,36 @@
 error_reporting(0);
 include("connection.php");
 if (isset($_POST['Update']) == "Update") {
-   
+
     $Error = "";
 
-    if (!$_POST['AddressOne']) {
-        $Error.="please enter the AddressOne<br/>";
-    }
-    if (!$_POST['AddressTwo']) {
-        $Error.="please enter the AddressTwo<br/>";
-    }
-    if (!$_POST['City']) {
+    if (!$_POST['AddressOne'])
+        $Error.="please enter the LastName<br/>";
+    else if (!preg_match('`[a-zA-Z]`', $_POST['AddressOne']))
+        $Error.="please enter the valid LastName<br/>";
+    else if (!$_POST['AddressOne'])
+        $Error.="please enter the AdressOne<br/>";
+
+    else if (!$_POST['AddressTwo'])
+        $Error.="please enter the LastName<br/>";
+
+    else if (!$_POST['City'])
         $Error.="please enter the City<br/>";
-    }
-    if (!$_POST['State']) {
+
+    else if (!preg_match('`[a-zA-Z]`', $_POST['City']))
+        $Error.="please enter the valid City<br/>";
+    else if (!$_POST['State'])
         $Error.="please enter the State<br/>";
-    }
-    if (!$_POST['Country']) {
+    else if (!preg_match('`[a-zA-Z]`', $_POST['State']))
+        $Error.="please enter the valid State<br/>";
+    elseif (!$_POST['Country'])
         $Error.="please enter the Country<br/>";
-    }
-    if (!$_POST['ZipCode']) {
+
+    else if (!preg_match('`[a-zA-Z]`', $_POST['Country']))
+        $Error.="please enter the valid City<br/>";
+
+    else 
+    {if (!$_POST['ZipCode'])
         $Error.="please enter the ZipCode<br/>";
     }
 
