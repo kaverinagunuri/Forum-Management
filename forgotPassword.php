@@ -9,7 +9,6 @@ if (isset($_POST['ForgotSubmit'])) {
     $RetrivePassword = $Row['Password'];
     $FirstName = $Row['FirstName'];
     if ($Row) {
-
         require_once('PHPMailer-master/class.phpmailer.php');
         include("PHPMailer-master/class.smtp.php");
         $Mail = new PHPMailer();
@@ -31,10 +30,8 @@ if (isset($_POST['ForgotSubmit'])) {
         $Address = "kaveri.nagunuri@karmanya.co.in";
         $Mail->AddAddress($ForgotEmail, $FirstName);
         if (!$Mail->Send()) {
-
             $Error.="Mailer Error: " . $Mail->ErrorInfo;
         } else {
-
             $Message.="The password is sent to ur emailID";
         }
     } else {

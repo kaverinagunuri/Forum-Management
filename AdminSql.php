@@ -8,13 +8,8 @@ $AdminQuery = "SELECT AdminName FROM Admin WHERE Id='" . $_SESSION['id'] . "' LI
 $Result = mysqli_query($Link, $AdminQuery);
 $Row = mysqli_fetch_array($Result);
 $AdminName = $Row['AdminName'];
-
-
-
-
 if (isset($_POST['Add-User']) == "Add-User") {
     $Error = "";
-
     if (!$_POST['FirstName'])
         $Error.="please enter the FirstName<br/>";
     else if (!preg_match('`[a-zA-Z]`', $_POST['FirstName']))
@@ -29,29 +24,20 @@ if (isset($_POST['Add-User']) == "Add-User") {
         $Error.="please enter valid email id <br/>";
     else if (!$_POST['Password'])
         $Error.="please enter the Password <br/>";
-
     else if (!$_POST['ConfirmPassword'])
         $Error.="please enter the ConfirmPassword <br/>";
     else if ($_POST['Password'] != $_POST['ConfirmPassword'])
         $Error.="please enter the ConfirmPassword same as Password <br/>";
-
     else if (!$_POST['Mobile'])
         $Error.="please enter the Mobile <br/>";
     else if (!preg_match("/^[1-9][0-9]{9,9}$/", $_POST['Mobile']))
         $Error.="please enter valid mobile number <br/>";
     else if (!$_POST['AddressOne'])
-        $Error.="please enter the LastName<br/>";
-    else if (!preg_match('`[a-zA-Z]`', $_POST['AddressOne']))
-        $Error.="please enter the valid LastName<br/>";
-    else if (!$_POST['AddressOne'])
         $Error.="please enter the AdressOne<br/>";
-
     else if (!$_POST['AddressTwo'])
         $Error.="please enter the LastName<br/>";
-
     else if (!$_POST['City'])
         $Error.="please enter the City<br/>";
-
     else if (!preg_match('`[a-zA-Z]`', $_POST['City']))
         $Error.="please enter the valid City<br/>";
     else if (!$_POST['State'])
@@ -60,10 +46,8 @@ if (isset($_POST['Add-User']) == "Add-User") {
         $Error.="please enter the valid State<br/>";
     elseif (!$_POST['Country'])
         $Error.="please enter the Country<br/>";
-
     else if (!preg_match('`[a-zA-Z]`', $_POST['Country']))
         $Error.="please enter the valid City<br/>";
-
     else if (!$_POST['ZipCode'])
         $Error.="please enter the ZipCode<br/>";
     else {
@@ -87,20 +71,16 @@ if (isset($_POST['Add-User']) == "Add-User") {
 
             mysqli_query($Link, $Query);
             $Message.="User has been successfully registered!";
+            
         }
     }
 }
 
-
-
-
 if (isset($_POST['Update-User']) == "Update-User") {
-
     $Error = "";
-
     if (!$_POST['Mobile'])
         $Error.="please enter the Mobile <br/>";
-    else if (!preg_match("/^[1-9][0-9]{9,9}$/"))
+    else if (!preg_match("/^[1-9][0-9]{9,9}$/",$_POST['Mobile']))
         $Error.="please enter valid mobile number <br/>";
 
     if (!$_POST['AddressOne']) {
@@ -133,10 +113,6 @@ if (isset($_POST['Update-User']) == "Update-User") {
         $Row = mysqli_fetch_array($UserResult);
     }
 }
-
-
-
-
 
 if (isset($_POST['Delete-Profile'])) {
     $DeleteQuery = 'DELETE FROM UserData WHERE Id="' . $_GET['Id'] . '" LIMIT 1';

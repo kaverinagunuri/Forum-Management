@@ -1,46 +1,29 @@
 <?php
 
 require_once('PHPMailer-master/class.phpmailer.php');
-include("PHPMailer-master/class.smtp.php"); // optional, gets called from within class.phpmailer.php if not already loaded
+include("PHPMailer-master/class.smtp.php");
+$Mail = new PHPMailer();
+$Body = "registration has been successfully completed";
 
-$mail = new PHPMailer();
+$Mail->IsSMTP();
+$Mail->Host = "mail.gmail.com";
+$Mail->SMTPDebug = 0;
+$Mail->SMTPAuth = true;
+$Mail->SMTPSecure = "tls";
+$Mail->Host = "smtp.gmail.com";
+$Mail->Port = 587;
+$Mail->Username = "kaveri.nagunuri@karmanya.co.in";
+$Mail->Password = "K@veri2710";
+$Mail->SetFrom('kaveri.nagunuri@karmanya.co.in', 'kaveri');
+$Mail->AddReplyTo("kaveri.nagunuri@karmanya.co.in", "kaveri");
+$Mail->Subject = "Registration Completed";
+$Mail->AltBody = "To view the message, please use an HTML compatible email viewer!";
+$Mail->MsgHTML($Body);
+$Address = mysqli_real_escape_string($Link, $_POST['EmailId']);
+$Mail->AddAddress($Address, "Success");
 
-$body = "registration has been successfully completed";
-//$body             = eregi_replace("[\]",'',$body);
-$mail->IsSMTP(); // telling the class to use SMTP
-
-$mail->Host = "mail.gmail.com"; // SMTP server
-
-$mail->SMTPDebug = 0;                     // enables SMTP debug information (for testing)
-// 1 = errors and messages
-$mail->SMTPAuth = true;                  // enable SMTP authentication
-
-$mail->SMTPSecure = "tls";                 // sets the prefix to the servier
-
-$mail->Host = "smtp.gmail.com";      // sets GMAIL as the SMTP server
-
-$mail->Port = 587;                   // set the SMTP port for the GMAIL server
-
-$mail->Username = "kaveri.nagunuri@karmanya.co.in";  // GMAIL username
-
-$mail->Password = "K@veri2710";            // GMAIL password
-
-
-
-$mail->SetFrom('kaveri.nagunuri@karmanya.co.in', 'kaveri');
-$mail->AddReplyTo("kaveri.nagunuri@karmanya.co.in", "kaveri");
-$mail->Subject = "Registration Completed";
-$mail->AltBody = "To view the message, please use an HTML compatible email viewer!"; // optional, comment out and test
-$mail->MsgHTML($body);
-
-$address = mysqli_real_escape_string($Link, $_POST['EmailId']);
-$mail->AddAddress($address, "Success");
-//$mail->AddAttachment("images/phpmailer.gif");      // attachment
-//$mail->AddAttachment("images/phpmailer_mini.gif"); // attachment
-if (!$mail->Send()) {
-
-    $error.= "Mailer Error: " . $mail->ErrorInfo;
+if (!$Mail->Send()) {
+    $Error.= "Mailer Error: " . $mail->ErrorInfo;
 } else {
-
-    $msg.="The password is sent to ur emailID";
+    $Message.="The password is sent to ur emailID";
 }?>

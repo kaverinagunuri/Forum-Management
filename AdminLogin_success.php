@@ -5,8 +5,6 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Login-Success</title>
-
-
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/styles.css" rel="stylesheet">
         <script src="js/jquery-2.2.2.min.js"></script>
@@ -14,27 +12,23 @@
         <script src="js/validation.js"></script>
 
         <?php
-        //include 'Login.php';
         include 'AdminSql.php';
-        
-    session_start();
-    $Id = $_SESSION['id'];
-    if (!$Id) {
-        header("Location:index.php");
-    }
+        session_start();
+        $Id = $_SESSION['id'];
+        if (!$Id) {
+            header("Location:index.php");
+        }
         ?>
     </head>
     <body>
         <div class="container">
-
             <div class="col-md-6 marginTop successContainer center ">
                 <h2>Welcome 
-<?php
-
-if (isset($AdminName)) {
-    echo $AdminName;
-}
-?></h2>
+                    <?php
+                    if (isset($AdminName)) {
+                        echo $AdminName;
+                    }
+                    ?></h2>
                 <p class="lead center"><a href="AdminLoginJS.php">Click here to view ur DashBord</a></p> 
             </div>
 

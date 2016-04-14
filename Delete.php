@@ -5,8 +5,6 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>User-Delete</title>
-
-
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/styles.css" rel="stylesheet">
         <script src="js/jquery-2.2.2.min.js"></script>
@@ -22,48 +20,28 @@
     if (!$id) {
         header("Location:index.php");
     }
-
-
     $UserQuery = "SELECT EmailId FROM UserData WHERE Id='" . $_GET['Id'] . "' LIMIT 1";
     $UserResult = mysqli_query($Link, $UserQuery);
     $row = mysqli_fetch_array($UserResult);
     $UserEmail = $row['EmailId'];
     ?>
     <body>
-
-
         <div class="nav navbar-default">
-
             <div class="container">
-
                 <div class="navbar-header">
-
                     <a href="" class="navbar-brand"><h4>Delete Profile</h4></a>
-
-                    <button type="button" class="navbar-toggle" data-toggle="collapse"
-                            data-target=".navbar-collapse">
-
-                        <span class="sr-only">Toggle navigation</span>
-
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"  data-target=".navbar-collapse">
+                       <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
-
-
                     </button>
-
                 </div>
-
                 <div class="collapse navbar-collapse">
-
                     <ul class="nav navbar-nav">
-
                         <li class="active"><a href="AdminLoginJS.php"> DashBoard</a></li>
-
                         <li><a href="AdminUser.php"><span class="glyphicon glyphicon-user">Add Users</span></a></li>
-
                         <li><a href="index.php?logout=1">Logout</a></li>
-
                     </ul>
                     <div class="navbar-form navbar-right">
                         <div class="sign">
@@ -73,11 +51,8 @@
                             ?>
                         </div>
                     </div>
-
                 </div>
-
             </div>
-
         </div>
         <div class="container UserContainer">
             <?php
@@ -96,10 +71,8 @@
                         <label for=EmailId>Email Id</label>
                         <input type="email" id="EmailId" name="EmailId" placeholder="emailId" class="form-control " readonly value="<?php echo $UserEmail; ?>" />
                     </div>
-
                     <div class="col-md-6 col-offset-3 marginTop">
                         <input type="submit" class="btn btn-success btn-lg" value="Delete-Profile" name="Delete-Profile" id="Delete-Profile"/></div>
-
                 </form>
             </div>
         </div>
